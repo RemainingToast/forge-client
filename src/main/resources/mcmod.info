@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "FaxHax",
+    "name": "FaxHax",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "faxhax.org",
+    "updateUrl": "",
+    "authorList": [
+      "RemainingToast"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
