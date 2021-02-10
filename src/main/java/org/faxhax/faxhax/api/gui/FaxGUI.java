@@ -2,37 +2,30 @@ package org.faxhax.faxhax.api.gui;
 
 import com.lukflug.panelstudio.CollapsibleContainer;
 import com.lukflug.panelstudio.DraggableContainer;
+import com.lukflug.panelstudio.FixedComponent;
 import com.lukflug.panelstudio.SettingsAnimation;
 import com.lukflug.panelstudio.hud.HUDClickGUI;
 import com.lukflug.panelstudio.mc12.MinecraftHUDGUI;
 import com.lukflug.panelstudio.settings.*;
-import com.lukflug.panelstudio.theme.ClearTheme;
-import com.lukflug.panelstudio.theme.GameSenseTheme;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxModule;
-import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSetting;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class FaxGUI extends MinecraftHUDGUI {
 
+    public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
     private final GUIInterface guiInterface;
     private final Theme theme;
     private final HUDClickGUI gui;
 
     public FaxGUI(){
         guiInterface=new GUIInterface(true) {
-            @Override
-            protected String getResourcePrefix() {
-                return "faxhax/assets";
-            }
-
             @Override
             public void drawString(Point pos, String s, Color c) {
                 end();
@@ -47,7 +40,12 @@ public class FaxGUI extends MinecraftHUDGUI {
 
             @Override
             public int getFontHeight() {
-                return FaxClickGUI.fontSize.getValue();
+                return 25;
+            }
+
+            @Override
+            protected String getResourcePrefix() {
+                return "faxhax/assets";
             }
         };
         theme=new FaxTheme(new SettingsColorScheme(
@@ -57,8 +55,20 @@ public class FaxGUI extends MinecraftHUDGUI {
                 FaxColors.outlineColor,
                 FaxColors.fontColor,
                 FaxColors.opacity
-        ),height,5);
-        gui=new HUDClickGUI(guiInterface, null);
+        ),HEIGHT,2, 5);
+        gui=new HUDClickGUI(guiInterface, null){
+            @Override
+            public void handleScroll (int diff) {
+                super.handleScroll(diff);
+                for (FixedComponent component: components) {
+                    if (!hudComponents.contains(component)) {
+                        Point p=component.getPosition(guiInterface);
+                        p.translate(0,-diff);
+                        component.setPosition(guiInterface,p);
+                    }
+                }
+            }
+        };
         for (FaxModule.FaxCategory c: FaxModule.FaxCategory.values()){
             DraggableContainer panel=new DraggableContainer(c.name(),null, theme.getPanelRenderer(), new SimpleToggleable(false), new SettingsAnimation(FaxClickGUI.animationSpeed),null,new Point(10,10), 150);
             gui.addComponent(panel);
@@ -87,7 +97,7 @@ public class FaxGUI extends MinecraftHUDGUI {
 
     @Override
     protected int getScrollSpeed() {
-        return FaxClickGUI.scrollSpeed.getValue();
+        return 5;
     }
 
 
