@@ -6,6 +6,7 @@ import com.lukflug.panelstudio.theme.ColorScheme;
 import com.lukflug.panelstudio.theme.GameSenseTheme;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import org.faxhax.faxhax.client.modules.client.FaxColors;
 
 import java.awt.*;
 
@@ -13,7 +14,6 @@ public class FaxTheme extends GameSenseTheme {
 
     public FaxTheme(ColorScheme scheme, int height, int border, int scroll) {
         super(scheme, height, border, scroll);
-        this.scheme = scheme;
         panelRenderer=new FaxRenderer(0,height,border,scroll);
         containerRenderer=new FaxRenderer(1,height,border,scroll);
         componentRenderer=new FaxRenderer(2,height,border,scroll);
@@ -33,7 +33,7 @@ public class FaxTheme extends GameSenseTheme {
             if (overlay) {
                 Color overlayColor;
                 if (context.isHovered()) {
-                    overlayColor = getColorScheme().getInactiveColor();
+                    overlayColor = new Color(255,255,255,100);
                 } else {
                     overlayColor = new Color(255, 255, 255, 0);
                 }
@@ -49,22 +49,20 @@ public class FaxTheme extends GameSenseTheme {
 
         @Override
         public void renderBorder(Context context, boolean focus, boolean active, boolean open) {
-            Color color=getDefaultColorScheme().getOutlineColor();
-//            if (level==0) {
-//                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(context.getSize().width,1)),color,color,color,color);
-//                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(1,context.getSize().height)),color,color,color,color);
-//                context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
-//            }
-//            if (level==0 || open) {
-//                context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x,context.getPos().y+context.getSize().height-1),new Dimension(context.getSize().width,1)),color,color,color,color);
-//                context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x,context.getPos().y+getHeight(open)-1),new Dimension(context.getSize().width,1)),color,color,color,color);
-//            }
+            // No Borders
         }
 
         @Override
-        public void renderBackground(Context context, boolean focus) {
-            super.renderBackground(context, focus);
-//            context.getInterface().drawImage(context.getRect(),0,false, context.getInterface().loadImage("faxmachine.png"));
+        public int renderScrollBar(Context context, boolean focus, boolean active, boolean scroll, int childHeight, int scrollPosition) {
+            // No Scroll Bar
+            return 0;
+        }
+
+        @Override
+        public Color getMainColor(boolean focus, boolean active) {
+            Color color = FaxColors.categoryBgColor.getValue();
+            if (level==0 && active) return new Color(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
+            return super.getMainColor(focus,active);
         }
 
         public void drawCenteredString(String text, Rectangle rect, Color color) {

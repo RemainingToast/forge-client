@@ -14,6 +14,7 @@ import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class FaxGUI extends MinecraftHUDGUI {
 
@@ -23,7 +24,7 @@ public class FaxGUI extends MinecraftHUDGUI {
     private final HUDClickGUI gui;
 
     public FaxGUI(){
-        theme=new FaxTheme(new SettingsColorScheme(FaxColors.enabledColor, FaxColors.backgroundColor,FaxColors.settingBackgroundColor,FaxColors.outlineColor,FaxColors.fontColor,FaxColors.opacity),HEIGHT,2,5);
+        theme=new FaxTheme(new SettingsColorScheme(FaxColors.enabledColor, FaxColors.backgroundColor,FaxColors.settingBackgroundColor,FaxColors.backgroundColor,FaxColors.fontColor,FaxColors.opacity),HEIGHT,2,5);
         guiInterface=new GUIInterface(true) {
             @Override
             public void drawString(Point pos, String s, Color c) {
@@ -70,6 +71,8 @@ public class FaxGUI extends MinecraftHUDGUI {
 //        }
         Point pos=new Point(DISTANCE,DISTANCE);
         for (FaxModule.FaxCategory category: FaxModule.FaxCategory.values()) {
+            ArrayList<FaxModule> mods = FaxHax.MODULES.getModulesInCategory(category);
+            if(mods.size() == 0) continue;
             DraggableContainer panel=new DraggableContainer(category.name(),null,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(FaxClickGUI.animationSpeed),null,new Point(pos),WIDTH) {
                 @Override
                 protected int getScrollHeight (int childHeight) {
@@ -78,7 +81,7 @@ public class FaxGUI extends MinecraftHUDGUI {
             };
             gui.addComponent(panel);
             pos.translate(WIDTH+DISTANCE,0);
-            for (FaxModule module: FaxHax.MODULES.getModulesInCategory(category)) {
+            for (FaxModule module: mods) {
                 addModule(panel,module);
             }
         }
@@ -97,7 +100,7 @@ public class FaxGUI extends MinecraftHUDGUI {
             } else if (property instanceof FaxSetting.Mode) {
                 container.addComponent(new EnumComponent(property.getName(),null,theme.getComponentRenderer(),(FaxSetting.Mode)property));
             } else if (property instanceof FaxSetting.ColorSetting) {
-                container.addComponent(new ColorComponent(property.getName(),null,theme.getPanelRenderer(), new SettingsAnimation(FaxClickGUI.animationSpeed), theme.getComponentRenderer(), (FaxSetting.ColorSetting)property, false, false, new SimpleToggleable(false)));
+                container.addComponent(new ColorComponent(property.getName(),null,theme.getPanelRenderer(), new SettingsAnimation(FaxClickGUI.animationSpeed), theme.getComponentRenderer(), (FaxSetting.ColorSetting)property, true, true, new SimpleToggleable(false)));
             }
         }
 //        container.addComponent(new FaxHaxKeybind(theme.getComponentRenderer(),module));
