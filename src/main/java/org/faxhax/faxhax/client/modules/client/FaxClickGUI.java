@@ -9,7 +9,7 @@ public class FaxClickGUI extends FaxModule {
 
     public static FaxSetting.Integer animationSpeed;
     public static FaxSetting.Integer scrollSpeed;
-    public static FaxSetting.Integer fontSize;
+    public static FaxSetting.Boolean customFont;
 
     public FaxClickGUI() {
         super("ClickGUI", FaxCategory.Client);
@@ -21,7 +21,7 @@ public class FaxClickGUI extends FaxModule {
     public void setup() {
         animationSpeed = registerInteger("Animation Speed", 200, 0, 1000);
         scrollSpeed = registerInteger("Scroll Speed", 10, 1, 20);
-        fontSize = registerInteger("Font Size", 10,2,20);
+        customFont = registerBoolean("Custom Font", true);
     }
 
     @Override

@@ -1,8 +1,11 @@
 package org.faxhax.faxhax.api.gui;
 
 import com.lukflug.panelstudio.Context;
+import com.lukflug.panelstudio.mc12.GLInterface;
 import com.lukflug.panelstudio.theme.ColorScheme;
 import com.lukflug.panelstudio.theme.GameSenseTheme;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 
 import java.awt.*;
 
@@ -36,17 +39,17 @@ public class FaxTheme extends GameSenseTheme {
                 }
                 context.getInterface().fillRect(context.getRect(), overlayColor, overlayColor, overlayColor, overlayColor);
             }
-            Point stringPos = new Point(rectangle.x + 5, rectangle.y);
-            if(level==0){
-                stringPos = new Point((int) rectangle.getCenterX() - 15, rectangle.y);
+            if(level == 0) drawCenteredString(text,rectangle,getFontColor(focus));
+            else {
+                Point stringPos = new Point(rectangle.x + 5, rectangle.y);
+                stringPos.translate(0, border);
+                context.getInterface().drawString(stringPos, text, getFontColor(focus));
             }
-            stringPos.translate(0, border);
-            context.getInterface().drawString(stringPos, text, getFontColor(focus));
         }
 
         @Override
         public void renderBorder(Context context, boolean focus, boolean active, boolean open) {
-//            Color color=getDefaultColorScheme().getOutlineColor();
+            Color color=getDefaultColorScheme().getOutlineColor();
 //            if (level==0) {
 //                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(context.getSize().width,1)),color,color,color,color);
 //                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(1,context.getSize().height)),color,color,color,color);
@@ -62,6 +65,17 @@ public class FaxTheme extends GameSenseTheme {
         public void renderBackground(Context context, boolean focus) {
             super.renderBackground(context, focus);
 //            context.getInterface().drawImage(context.getRect(),0,false, context.getInterface().loadImage("faxmachine.png"));
+        }
+
+        public void drawCenteredString(String text, Rectangle rect, Color color) {
+            GLInterface.end();
+            FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+            int width = font.getStringWidth(text);
+            int height = font.FONT_HEIGHT;
+            int x = rect.x + (rect.width - width) / 2;
+            int y = rect.y + ((rect.height - height) / 2);
+            font.drawStringWithShadow(text,x,y,color.getRGB());
+            GLInterface.begin();
         }
     }
 }
