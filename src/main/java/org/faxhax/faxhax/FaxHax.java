@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.faxhax.faxhax.api.event.FaxEventManager;
@@ -16,6 +17,15 @@ import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
 import org.lwjgl.opengl.Display;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 @Mod(
         modid = FaxHax.MOD_ID,
@@ -41,12 +51,20 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-//        Display.setIcon();
+        try {
+            BufferedImage originalImage=ImageIO.read(getClass().getResourceAsStream("faxmachine.png"));
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            ImageIO.write(originalImage, "png", baos );
+            Display.setIcon(new ByteBuffer[] { ByteBuffer.wrap(baos.toByteArray()) });
+        } catch (Exception e){
+            System.out.println("[FaxHax] Icon failed to load!");
+        }
         LOG = LogManager.getLogger(MOD_NAME);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        MC = Minecraft.getMinecraft();
         EVENTS = new EventManager();
         EVENT_MANAGER = new FaxEventManager();
         SETTINGS = new FaxSettingManager();
@@ -57,16 +75,13 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        MC = Minecraft.getMinecraft();
         printLog("~~~~~~~~~~~"+MOD_NAME+"~~~~~~~~~~~");
-        printLog("Running Version "+VERSION);
         printLog("Welcome to " + MOD_NAME + " " + MC.getSession().getUsername() + "!");
-        printLog("Initialization complete");
+        printLog("Running Version "+VERSION);
         printLog("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     public static void printLog(String str) {
         LOG.info(str);
     }
-
 }

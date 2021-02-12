@@ -3,10 +3,14 @@ package org.faxhax.faxhax.api.module;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
+import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
+import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class FaxModuleManager {
@@ -14,12 +18,17 @@ public class FaxModuleManager {
     public static ArrayList<FaxModule> faxModules = new ArrayList<>();
 
     public FaxModuleManager() {
-        //Combat
+        // Client
         addMod(new FaxClickGUI());
         addMod(new FaxColors());
+        addMod(new FaxHudEditor());
 
-        //render
+        // HUD
+        addMod(new FaxArrayList());
+
+        // Render
         addMod(new FaxCustomFov());
+        faxModules.sort(Comparator.comparing(FaxModule::getName));
     }
 
     public void addMod(FaxModule module) {

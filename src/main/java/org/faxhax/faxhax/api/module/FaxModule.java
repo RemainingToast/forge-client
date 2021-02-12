@@ -5,6 +5,7 @@ import com.lukflug.panelstudio.settings.Toggleable;
 import net.minecraft.client.Minecraft;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.FaxColor;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -138,24 +139,24 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
         return setting;
     }
 
-    protected FaxSetting.ColorSetting registerColor (final String name, Color color) {
+    protected FaxSetting.ColorSetting registerColor (final String name, FaxColor color) {
         final FaxSetting.ColorSetting setting = new FaxSetting.ColorSetting(name, this, getCategory(), false, color);
         FaxHax.SETTINGS.addSetting(setting);
         return setting;
     }
 
     protected FaxSetting.ColorSetting registerColor (final String name) {
-        return registerColor(name, new Color(90,145,240));
+        return registerColor(name, new FaxColor(90,145,240));
     }
 
     public enum FaxCategory {
-        COMBAT,
+        Combat,
         Exploits,
         Movement,
         Misc,
         Render,
-        HUD,
-        Client
+        Client,
+        HUD
     }
 
     @Override

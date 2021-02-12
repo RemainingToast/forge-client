@@ -4,6 +4,7 @@ import com.lukflug.panelstudio.settings.EnumSetting;
 import com.lukflug.panelstudio.settings.NumberSetting;
 import com.lukflug.panelstudio.settings.Toggleable;
 import org.faxhax.faxhax.api.module.FaxModule;
+import org.faxhax.faxhax.api.util.FaxColor;
 
 import java.awt.*;
 import java.util.List;
@@ -229,22 +230,22 @@ public abstract class FaxSetting {
     public static class ColorSetting extends FaxSetting implements com.lukflug.panelstudio.settings.ColorSetting {
 
         private boolean rainbow;
-        private Color value;
+        private FaxColor value;
 
-        public ColorSetting (final String name, final FaxModule parent, final FaxModule.FaxCategory faxCategory, boolean rainbow, final Color value) {
+        public ColorSetting (final String name, final FaxModule parent, final FaxModule.FaxCategory faxCategory, boolean rainbow, final FaxColor value) {
             super(name, parent, faxCategory, Type.COLOR);
             this.rainbow=rainbow;
             this.value=value;
         }
 
-        public Color getValue() {
+        public FaxColor getValue() {
             if (rainbow) {
-                return Color.getHSBColor((System.currentTimeMillis()%(360*32))/(360f * 32),1,1);
+                return FaxColor.fromHSB((System.currentTimeMillis()%(360*32))/(360f * 32),1,1);
             }
             return this.value;
         }
 
-        public void setValue (boolean rainbow, final Color value) {
+        public void setValue (boolean rainbow, final FaxColor value) {
             this.rainbow = rainbow;
             this.value = value;
         }
@@ -254,11 +255,11 @@ public abstract class FaxSetting {
         }
 
         public void fromInteger (int number) {
-            this.value = new Color(number&0xFFFFFF);
+            this.value = new FaxColor(number&0xFFFFFF);
             this.rainbow = ((number&0x1000000)!=0);
         }
 
-        public Color getColor() {
+        public FaxColor getColor() {
             return this.value;
         }
 
@@ -269,7 +270,7 @@ public abstract class FaxSetting {
 
         @Override
         public void setValue(Color value) {
-            setValue(getRainbow(), value);
+            setValue(getRainbow(), new FaxColor(value));
         }
 
         @Override
