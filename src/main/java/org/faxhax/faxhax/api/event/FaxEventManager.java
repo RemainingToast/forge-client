@@ -23,10 +23,10 @@ public class FaxEventManager {
         if (event.isCanceled()) return;
     }
 
-    @SubscribeEvent
-    public void onRender(RenderGameOverlayEvent event) {
-        if (!event.isCanceled()) FaxHax.MODULES.onRender();
-    }
+//    @SubscribeEvent
+//    public void onRender(RenderGameOverlayEvent event) {
+//        if (!event.isCanceled()) FaxHax.MODULES.onRender();
+//    }
 
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
     public void onKeyInput(InputEvent.KeyInputEvent event) {

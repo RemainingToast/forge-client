@@ -1,14 +1,16 @@
 package org.faxhax.faxhax.client.modules.render;
 
-import net.minecraft.client.settings.GameSettings;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
 
 public class FaxCustomFov extends FaxModule {
 
-    public static FaxSetting.Integer customfov;
-    public static FaxSetting.Integer itemfov;
+    public static FaxSetting.Integer customFov;
+    public static FaxSetting.Boolean itemBool;
+    public static FaxSetting.Integer itemFov;
 
     public FaxCustomFov() {
         super("CustomFOV", FaxCategory.Render);
@@ -17,8 +19,9 @@ public class FaxCustomFov extends FaxModule {
 
     @Override
     public void setup() {
-        customfov = registerInteger("FOV", 110, 0, 170);
-        itemfov = registerInteger("Item FOV", 110, 0, 170);
+        customFov = registerInteger("FOV", 110, 0, 170);
+        itemBool = registerBoolean("Items", true);
+        itemFov = registerInteger("Item FOV", 110, 0, 170);
     }
 
     private float fov;
@@ -31,13 +34,18 @@ public class FaxCustomFov extends FaxModule {
 
     @Override
     public void onUpdate() {
-        mc.gameSettings.fovSetting = customfov.getValue();
+        mc.gameSettings.fovSetting = customFov.getValue();
     }
 
     @Override
     protected void onDisable() {
         mc.gameSettings.fovSetting = fov;
         MinecraftForge.EVENT_BUS.unregister(this);
+    }
 
+    @SubscribeEvent
+    public void onFovEvent(EntityViewRenderEvent.FOVModifier e) {
+        if (itemBool.getValue()) e.setFOV(itemFov.getValue());
+        mc.gameSettings.fovSetting = customFov.getValue();
     }
 }
