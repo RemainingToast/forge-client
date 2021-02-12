@@ -3,6 +3,7 @@ package org.faxhax.faxhax.api.module;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
+import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
@@ -16,6 +17,9 @@ public class FaxModuleManager {
         //Combat
         addMod(new FaxClickGUI());
         addMod(new FaxColors());
+
+        //render
+        addMod(new FaxCustomFov());
     }
 
     public void addMod(FaxModule module) {
