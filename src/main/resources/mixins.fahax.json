@@ -1,0 +1,9 @@
+{
+  "required"           : true,
+  "compatibilityLevel" : "JAVA_8",
+  "package"            : "org.faxhax.faxhax.mixin",
+  "refmap"             : "mixins.faxhax.refmap.json",
+  "mixins"             : [
+
+  ]
+}
