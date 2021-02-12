@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 public class FaxGUI extends MinecraftHUDGUI {
 
-    public static final int WIDTH=100,HEIGHT=12,DISTANCE=10,HUD_BORDER=2;
+    public static final int WIDTH=100,HEIGHT=10,DISTANCE=10,HUD_BORDER=2;
     private final GUIInterface guiInterface;
     private final Theme theme;
     private final HUDClickGUI gui;
 
     public FaxGUI(){
-        theme=new FaxTheme(new SettingsColorScheme(FaxColors.enabledColor, FaxColors.backgroundColor,FaxColors.settingBackgroundColor,FaxColors.backgroundColor,FaxColors.fontColor,FaxColors.opacity),HEIGHT,2,5);
+        theme=new FaxTheme(new SettingsColorScheme(FaxColors.enabledColor, FaxColors.backgroundColor,FaxColors.settingBackgroundColor,FaxColors.outlineColor,FaxColors.fontColor,FaxColors.opacity),HEIGHT,2);
         guiInterface=new GUIInterface(true) {
             @Override
             public void drawString(Point pos, String s, Color c) {
@@ -100,7 +100,7 @@ public class FaxGUI extends MinecraftHUDGUI {
             } else if (property instanceof FaxSetting.Mode) {
                 container.addComponent(new EnumComponent(property.getName(),null,theme.getComponentRenderer(),(FaxSetting.Mode)property));
             } else if (property instanceof FaxSetting.ColorSetting) {
-                container.addComponent(new ColorComponent(property.getName(),null,theme.getPanelRenderer(), new SettingsAnimation(FaxClickGUI.animationSpeed), theme.getComponentRenderer(), (FaxSetting.ColorSetting)property, true, true, new SimpleToggleable(false)));
+                container.addComponent(new ColorComponent(property.getName(),null,theme.getComponentRenderer(), new SettingsAnimation(FaxClickGUI.animationSpeed), theme.getComponentRenderer(), (FaxSetting.ColorSetting)property, true, true, new SimpleToggleable(false)));
             }
         }
 //        container.addComponent(new FaxHaxKeybind(theme.getComponentRenderer(),module));

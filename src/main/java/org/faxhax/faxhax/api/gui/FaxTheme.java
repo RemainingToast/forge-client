@@ -12,11 +12,11 @@ import java.awt.*;
 
 public class FaxTheme extends GameSenseTheme {
 
-    public FaxTheme(ColorScheme scheme, int height, int border, int scroll) {
-        super(scheme, height, border, scroll);
-        panelRenderer=new FaxRenderer(0,height,border,scroll);
-        containerRenderer=new FaxRenderer(1,height,border,scroll);
-        componentRenderer=new FaxRenderer(2,height,border,scroll);
+    public FaxTheme(ColorScheme scheme, int height, int border) {
+        super(scheme, height, border, 0);
+        panelRenderer=new FaxRenderer(0,height,border,0);
+        containerRenderer=new FaxRenderer(1,height-2,border,0);
+        componentRenderer=new FaxRenderer(2,height-2,border,0);
     }
 
 
@@ -41,21 +41,23 @@ public class FaxTheme extends GameSenseTheme {
             }
             if(level == 0) drawCenteredString(text,rectangle,getFontColor(focus));
             else {
-                Point stringPos = new Point(rectangle.x + 5, rectangle.y);
+                Point stringPos = new Point(rectangle.x + 3, rectangle.y - 2);
                 stringPos.translate(0, border);
                 context.getInterface().drawString(stringPos, text, getFontColor(focus));
+//                TODO: str = if(moduleOpened) "-" else "+"
+//                if(level==1) context.getInterface().drawString(new Point(rectangle.width - 5, rectangle.y), str, getFontColor(focus));
             }
         }
 
         @Override
         public void renderBorder(Context context, boolean focus, boolean active, boolean open) {
-            // No Borders
-        }
-
-        @Override
-        public int renderScrollBar(Context context, boolean focus, boolean active, boolean scroll, int childHeight, int scrollPosition) {
-            // No Scroll Bar
-            return 0;
+            Color color=getColorScheme().getOutlineColor();
+            if (level==0) {
+                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(context.getSize().width,1)),color,color,color,color);
+                context.getInterface().fillRect(new Rectangle(context.getPos(),new Dimension(1,context.getSize().height)),color,color,color,color);
+                context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x+context.getSize().width-1,context.getPos().y),new Dimension(1,context.getSize().height)),color,color,color,color);
+                context.getInterface().fillRect(new Rectangle(new Point(context.getPos().x,context.getPos().y+context.getSize().height-1),new Dimension(context.getSize().width, 1)),color,color,color,color);
+            }
         }
 
         @Override
@@ -71,7 +73,7 @@ public class FaxTheme extends GameSenseTheme {
             int width = font.getStringWidth(text);
             int height = font.FONT_HEIGHT;
             int x = rect.x + (rect.width - width) / 2;
-            int y = rect.y + ((rect.height - height) / 2);
+            int y = (rect.y + (rect.height - height) / 2) + 1;
             font.drawStringWithShadow(text,x,y,color.getRGB());
             GLInterface.begin();
         }
