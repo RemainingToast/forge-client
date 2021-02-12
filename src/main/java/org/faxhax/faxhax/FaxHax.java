@@ -15,6 +15,7 @@ import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
+import org.lwjgl.opengl.Display;
 
 @Mod(
         modid = FaxHax.MOD_ID,
@@ -40,6 +41,7 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+//        Display.setIcon();
         LOG = LogManager.getLogger(MOD_NAME);
     }
 
