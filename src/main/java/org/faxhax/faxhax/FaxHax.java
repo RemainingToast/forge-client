@@ -52,12 +52,14 @@ public class FaxHax {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         try {
-            BufferedImage originalImage=ImageIO.read(getClass().getResourceAsStream("faxmachine.png"));
+            BufferedImage originalImage=ImageIO.read(FaxHax.class.getResourceAsStream("faxmachine.png"));
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
             ImageIO.write(originalImage, "png", baos );
             Display.setIcon(new ByteBuffer[] { ByteBuffer.wrap(baos.toByteArray()) });
         } catch (Exception e){
             System.out.println("[FaxHax] Icon failed to load!");
+            e.printStackTrace();
+            System.out.println("[FaxHax] You can ignore this error.");
         }
         LOG = LogManager.getLogger(MOD_NAME);
     }

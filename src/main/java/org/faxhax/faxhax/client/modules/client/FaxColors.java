@@ -29,10 +29,10 @@ public class FaxColors extends FaxModule {
 
     @Override
     public void setup() {
-        opacity = registerInteger("Opacity", 150, 50, 255);
-        enabledColor = registerColor("Enabled", new FaxColor(255, 0, 0, 255));
-        categoryBgColor = registerColor("Category BG", new FaxColor(30, 30, 30, 255));
-        outlineColor = registerColor("Outline", new FaxColor(0,0,255,255));
+        opacity = registerInteger("Opacity", 201, 50, 255);
+        enabledColor = registerColor("Enabled", new FaxColor(200, 30, 30, 255));
+        categoryBgColor = registerColor("Category BG", new FaxColor(0, 90, 170, 255));
+        outlineColor = registerColor("Outline", new FaxColor(0,0,0,255));
         backgroundColor = registerColor("Background", new FaxColor(0, 0, 0, 255));
         settingBackgroundColor = registerColor("Setting", new FaxColor(30, 30, 30, 255));
         fontColor = registerColor("Font", new FaxColor(255, 255, 255, 255));

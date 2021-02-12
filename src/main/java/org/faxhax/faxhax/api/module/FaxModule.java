@@ -145,8 +145,10 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
         return setting;
     }
 
-    protected FaxSetting.ColorSetting registerColor (final String name) {
-        return registerColor(name, new FaxColor(90,145,240));
+    protected FaxSetting.ColorSetting registerColor (final String name, FaxColor color, Boolean rainbow) {
+        final FaxSetting.ColorSetting setting = new FaxSetting.ColorSetting(name, this, getCategory(), rainbow, color);
+        FaxHax.SETTINGS.addSetting(setting);
+        return setting;
     }
 
     public enum FaxCategory {
