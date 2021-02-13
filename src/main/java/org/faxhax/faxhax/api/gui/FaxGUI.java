@@ -130,7 +130,7 @@ public class FaxGUI extends MinecraftHUDGUI {
                 container.addComponent(new ColorComponent(property.getName(),null,theme.getComponentRenderer(), new SettingsAnimation(FaxClickGUI.animationSpeed), theme.getComponentRenderer(), (FaxSetting.ColorSetting)property, true, true, new SimpleToggleable(false)));
             }
         }
-//        container.addComponent(new FaxHaxKeybind(theme.getComponentRenderer(),module));
+      container.addComponent(new FaxKeyBind(theme.getComponentRenderer(),module));
     }
 
     @Override
