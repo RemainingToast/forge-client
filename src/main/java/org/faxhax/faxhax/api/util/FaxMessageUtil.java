@@ -41,22 +41,22 @@ public class FaxMessageUtil {
 		}
 	}
 
-	public static void client_message(String message) {
+	public static void sendClientMessage(String message) {
 		if (mc.player != null) {
 			mc.player.sendMessage(new ChatMessage(message));
 		}
 	}
 
 	public static void send_client_message_simple(String message) {
-		client_message(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
+		sendClientMessage(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
 	}
 
 	public static void send_client_message(String message) {
-		client_message(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
+		sendClientMessage(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
 	}
 
 	public static void send_client_error_message(String message) {
-		client_message(ChatFormatting.RED + FaxHax.MOD_NAME + " " + r + message);
+		sendClientMessage(ChatFormatting.RED + FaxHax.MOD_NAME + " " + r + message);
 	}
 
 	public static class ChatMessage extends TextComponentBase {

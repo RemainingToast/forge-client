@@ -14,6 +14,7 @@ import org.faxhax.faxhax.api.event.FaxEventRegister;
 import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
+import org.faxhax.faxhax.api.util.FaxDiscord;
 import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.lwjgl.opengl.Display;
@@ -37,7 +38,7 @@ public class FaxHax {
     public static Minecraft MC;
     public static final String MOD_ID = "faxhax";
     public static final String MOD_NAME = "FaxHax";
-    public static final String VERSION = "0.0.1";
+    public static final String VERSION = "1.0.1";
 
     public static EventBus EVENTS;
     public static FaxEventManager EVENT_MANAGER;
@@ -77,11 +78,14 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        FaxDiscord.INSTANCE.enable();
         printLog("~~~~~~~~~~~"+MOD_NAME+"~~~~~~~~~~~");
         printLog("Welcome to " + MOD_NAME + " " + MC.getSession().getUsername() + "!");
         printLog("Running Version "+VERSION);
         printLog("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
+
+
 
     public static void printLog(String str) {
         LOG.info(str);
