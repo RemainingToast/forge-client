@@ -4,6 +4,7 @@ import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
+import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
@@ -25,6 +26,9 @@ public class FaxModuleManager {
         addMod(new FaxClickGUI());
         addMod(new FaxColors());
         addMod(new FaxHudEditor());
+
+        // Combat
+        addMod(new FaxFastUtil());
 
         // HUD
         addMod(new FaxArrayList());

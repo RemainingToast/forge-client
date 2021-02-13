@@ -49,7 +49,7 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Display.setTitle("FaxHax" + " < " + VERSION + " › ");
+        Display.setTitle("FaxHax" + " < " + VERSION + " > ");
         try {
             BufferedImage originalImage=ImageIO.read(FaxHax.class.getResourceAsStream("assets/faxhax/gui/faxhax.png"));
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
