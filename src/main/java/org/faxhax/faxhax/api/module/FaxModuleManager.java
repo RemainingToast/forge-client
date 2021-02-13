@@ -8,12 +8,11 @@ import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.faxhax.faxhax.client.modules.render.FaxFullBright;
-import org.faxhax.faxhax.client.modules.render.FaxOffHandSwing;
+import org.faxhax.faxhax.client.modules.misc.FaxOffHandSwing;
 import org.faxhax.faxhax.client.modules.render.FaxShulkerPreview;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
