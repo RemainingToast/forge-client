@@ -5,6 +5,7 @@ import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
+import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.faxhax.faxhax.client.modules.render.FaxFullBright;
 import org.faxhax.faxhax.client.modules.render.FaxOffHandSwing;
@@ -31,6 +32,9 @@ public class FaxModuleManager {
         addMod(new FaxCustomFov());
         addMod(new FaxFullBright());
         addMod(new FaxOffHandSwing());
+
+        //misc
+        addMod(new FaxFakePlayer());
         faxModules.sort(Comparator.comparing(FaxModule::getName));
     }
 
