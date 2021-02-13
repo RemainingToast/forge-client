@@ -6,10 +6,11 @@ import org.faxhax.faxhax.client.modules.client.FaxColors;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
+import org.faxhax.faxhax.client.modules.render.FaxFullBright;
+import org.faxhax.faxhax.client.modules.render.FaxOffHandSwing;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,8 @@ public class FaxModuleManager {
 
         // Render
         addMod(new FaxCustomFov());
+        addMod(new FaxFullBright());
+        addMod(new FaxOffHandSwing());
         faxModules.sort(Comparator.comparing(FaxModule::getName));
     }
 
