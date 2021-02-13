@@ -7,24 +7,21 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.faxhax.faxhax.api.event.FaxEventManager;
 import org.faxhax.faxhax.api.event.FaxEventRegister;
 import org.faxhax.faxhax.api.gui.FaxGUI;
-import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
+import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
+import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 
 @Mod(
@@ -46,15 +43,15 @@ public class FaxHax {
     public static FaxEventManager EVENT_MANAGER;
     public static FaxSettingManager SETTINGS;
     public static FaxModuleManager MODULES;
+    public static FaxFontRenderer FONT;
     public static FaxGUI CLICKGUI; // GUI Last
 
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Display.setTitle("FaxHax" + " | " + VERSION);
-
+        Display.setTitle("FaxHax" + " ‹ " + VERSION + " › ");
         try {
-            BufferedImage originalImage=ImageIO.read(FaxHax.class.getResourceAsStream("faxmachine.png"));
+            BufferedImage originalImage=ImageIO.read(FaxHax.class.getResourceAsStream("assets/faxhax/gui/faxhax.png"));
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
             ImageIO.write(originalImage, "png", baos );
             Display.setIcon(new ByteBuffer[] { ByteBuffer.wrap(baos.toByteArray()) });
@@ -74,6 +71,7 @@ public class FaxHax {
         SETTINGS = new FaxSettingManager();
         MODULES = new FaxModuleManager();
         CLICKGUI = new FaxGUI(); // GUI Last
+        FONT = new FaxFontRenderer(new Font("Junction", Font.PLAIN, 18),true,true);
         FaxEventRegister.registerEventManager(EVENT_MANAGER);
     }
 

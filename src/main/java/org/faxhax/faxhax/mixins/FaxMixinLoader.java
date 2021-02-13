@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.mixin;
+package org.faxhax.faxhax.mixins;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;

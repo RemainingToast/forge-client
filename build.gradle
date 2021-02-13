@@ -109,7 +109,7 @@ jar {
         attributes (
                 "FMLCorePluginContainsFMLMod" : "true",
                 "ForceLoadAsMod"              : "true",
-                "FMLCorePlugin"               : "org.faxhax.faxhax.FaxHax",
+                "FMLCorePlugin"               : "org.faxhax.faxhax.mixin.FaxMixinLoader",
                 "MixinConfigs"                : "mixins.faxhax.json",
                 "tweakClass"                  : "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder"                  : 0,

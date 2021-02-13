@@ -3,7 +3,10 @@ package org.faxhax.faxhax.client.modules.client;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
 import org.lwjgl.input.Keyboard;
+
+import java.awt.*;
 
 public class FaxClickGUI extends FaxModule {
 

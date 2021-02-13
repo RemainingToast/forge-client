@@ -1,9 +1,10 @@
 {
-  "required"           : true,
-  "compatibilityLevel" : "JAVA_8",
-  "package"            : "org.faxhax.faxhax.mixin",
-  "refmap"             : "mixins.faxhax.refmap.json",
-  "mixins"             : [
-
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.faxhax.faxhax.mixins",
+  "refmap": "mixins.faxhax.refmap.json",
+  "mixins": [
+    "FaxMixinGuiMainMenu",
+    "FaxMixinGuiScreen"
   ]
 }

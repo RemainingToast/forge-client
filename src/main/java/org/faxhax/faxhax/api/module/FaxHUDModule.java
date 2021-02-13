@@ -25,4 +25,8 @@ public abstract class FaxHUDModule extends FaxModule {
     public void resetPosition() {
         component.setPosition(FaxHax.CLICKGUI.guiInterface,position);
     }
+
+    public Point getPosition() {
+        return position;
+    }
 }

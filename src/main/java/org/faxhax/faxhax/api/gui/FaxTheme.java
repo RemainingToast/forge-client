@@ -6,6 +6,11 @@ import com.lukflug.panelstudio.theme.ColorScheme;
 import com.lukflug.panelstudio.theme.GameSenseTheme;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import org.faxhax.faxhax.FaxHax;
+import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
+import org.faxhax.faxhax.api.util.font.FaxFontUtil;
+import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 
 import java.awt.*;
@@ -39,7 +44,12 @@ public class FaxTheme extends GameSenseTheme {
                 }
                 context.getInterface().fillRect(context.getRect(), overlayColor, overlayColor, overlayColor, overlayColor);
             }
-            if(level == 0) drawCenteredString(text,rectangle,getFontColor(focus));
+            if(level == 0) {
+                GLInterface.end();
+                if(FaxClickGUI.customFont.getValue()) FaxHax.FONT.drawCenteredStringWithShadow(text,rectangle,new FaxColor(getFontColor(focus)));
+                else drawCenteredString(text,rectangle,getFontColor(focus));
+                GLInterface.begin();
+            }
             else {
                 Point stringPos = new Point(rectangle.x + 3, rectangle.y - 2);
                 stringPos.translate(0, border);
@@ -66,16 +76,16 @@ public class FaxTheme extends GameSenseTheme {
             if (level==0 && active) return new Color(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha());
             return super.getMainColor(focus,active);
         }
+    }
 
-        public void drawCenteredString(String text, Rectangle rect, Color color) {
-            GLInterface.end();
-            FontRenderer font = Minecraft.getMinecraft().fontRenderer;
-            int width = font.getStringWidth(text);
-            int height = font.FONT_HEIGHT;
-            int x = rect.x + (rect.width - width) / 2;
-            int y = (rect.y + (rect.height - height) / 2) + 1;
-            font.drawStringWithShadow(text,x,y,color.getRGB());
-            GLInterface.begin();
-        }
+    public void drawCenteredString(String text, Rectangle rect, Color color) {
+        GLInterface.end();
+        FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+        int width = font.getStringWidth(text);
+        int height = font.FONT_HEIGHT;
+        int x = rect.x + (rect.width - width) / 2;
+        int y = (rect.y + (rect.height - height) / 2) + 1;
+        font.drawStringWithShadow(text,x,y,color.getRGB());
+        GLInterface.begin();
     }
 }

@@ -12,6 +12,8 @@ import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxHUDModule;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.font.FaxFontUtil;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 
@@ -33,20 +35,21 @@ public class FaxGUI extends MinecraftHUDGUI {
             public void drawString(Point pos, String s, Color c) {
                 GLInterface.end();
                 int x=pos.x+2, y=pos.y+2;
-                FaxHax.MC.fontRenderer.drawStringWithShadow(s,x,y,c.getRGB());
+//                if (!FaxClickGUI.customFont.getValue()) {
+//                    x+=1;
+//                }
+                FaxFontUtil.drawStringWithShadow(FaxClickGUI.customFont.getValue(),s,x,y,new FaxColor(c));
                 GLInterface.begin();
             }
 
             @Override
             public int getFontWidth(String s) {
-//                return (int)Math.round(FontUtil.getStringWidth(ColorMain.customFont.getValue(),s))+4;
-                return Math.round(FaxHax.MC.fontRenderer.getStringWidth(s))+4;
+                return Math.round(FaxFontUtil.getStringWidth(FaxClickGUI.customFont.getValue(),s))+4;
             }
 
             @Override
             public int getFontHeight() {
-//                return (int)Math.round(FontUtil.getFontHeight(ColorMain.customFont.getValue()))+2;
-                return FaxHax.MC.fontRenderer.FONT_HEIGHT+2;
+                return Math.round(FaxFontUtil.getFontHeight(FaxClickGUI.customFont.getValue()))+2;
             }
 
             @Override

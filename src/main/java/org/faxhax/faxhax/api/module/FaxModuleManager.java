@@ -9,9 +9,11 @@ import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.faxhax.faxhax.client.modules.render.FaxFullBright;
 import org.faxhax.faxhax.client.modules.render.FaxOffHandSwing;
+import org.faxhax.faxhax.client.modules.render.FaxShulkerPreview;
 import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
@@ -28,13 +30,14 @@ public class FaxModuleManager {
         // HUD
         addMod(new FaxArrayList());
 
+        // Misc
+        addMod(new FaxFakePlayer());
+
         // Render
         addMod(new FaxCustomFov());
         addMod(new FaxFullBright());
         addMod(new FaxOffHandSwing());
-
-        //misc
-        addMod(new FaxFakePlayer());
+        addMod(new FaxShulkerPreview());
         faxModules.sort(Comparator.comparing(FaxModule::getName));
     }
 
