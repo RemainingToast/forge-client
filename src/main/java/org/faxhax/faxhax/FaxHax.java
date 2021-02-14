@@ -25,6 +25,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 @Mod(
         modid = FaxHax.MOD_ID,
@@ -53,6 +54,15 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        AUTH = new FaxAuthUtil();
+        AUTH_KEY = AUTH.getLicenseKey();
+        LOG = LogManager.getLogger(MOD_NAME);
+
+        if(!AUTH.isLicensed(AUTH_KEY)) {
+            printLog("You don't have a FaxHax license!");
+            MC.shutdown();
+        }
+
         Display.setTitle("FaxHax" + " v" + VERSION);
         try {
             BufferedImage originalImage=ImageIO.read(FaxHax.class.getResourceAsStream("assets/faxhax/gui/faxhax.png"));
@@ -60,13 +70,8 @@ public class FaxHax {
             ImageIO.write(originalImage, "png", baos );
             Display.setIcon(new ByteBuffer[] { ByteBuffer.wrap(baos.toByteArray()) });
         } catch (Exception e){
-            System.out.println("[FaxHax] Icon failed to load!");
-            e.printStackTrace();
-            System.out.println("[FaxHax] You can ignore this error.");
+            printLog("Icon failed to load!");
         }
-        AUTH = new FaxAuthUtil();
-        AUTH_KEY = AUTH.getLicenseKey();
-        LOG = LogManager.getLogger(MOD_NAME);
     }
 
     @Mod.EventHandler
@@ -83,17 +88,12 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        boolean bool = AUTH.isLicensed(AUTH_KEY);
         FaxDiscord.INSTANCE.enable();
         printLog("~~~~~~~~~~~"+MOD_NAME+"~~~~~~~~~~~");
         printLog("Welcome to "+MOD_NAME+" "+MC.getSession().getUsername()+"!");
         printLog("Running Version "+VERSION);
-        printLog("License: "+AUTH_KEY+" Licensed: "+bool);
+        printLog("License: "+AUTH_KEY);
         printLog("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        if(!bool) {
-            printLog("unluggy");
-            MC.shutdown();
-        }
     }
 
 

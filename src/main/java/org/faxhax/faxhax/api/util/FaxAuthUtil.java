@@ -14,17 +14,16 @@ import java.util.List;
 
 public class FaxAuthUtil {
 
-    private List<String> licenses = new ArrayList<>();
-
-    private String licensesURL = "https://gist.githubusercontent.com/RemainingToast/3e0db94180053f7f8612229f43e7109e/raw/226a8007ec6a1b31875e461949227e9eef3e6442/licenses";
+    private final List<String> LICENSES = new ArrayList<>();
 
     public FaxAuthUtil(){
         try {
-            URL pastebin = new URL(licensesURL);
+            String URL = "https://pastebin.com/raw/x0x12Rr4";
+            URL pastebin = new URL(URL);
             BufferedReader in = new BufferedReader(new InputStreamReader(pastebin.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                licenses.add(inputLine);
+                LICENSES.add(inputLine);
             }
         } catch (IOException e) {
             FaxHax.printLog("Failed to read licenses!!");
@@ -39,7 +38,7 @@ public class FaxAuthUtil {
     }
 
     public Boolean isLicensed(String hwid) {
-        return licenses.contains(hwid);
+        return LICENSES.contains(hwid);
     }
 
     public String getLicenseKey(){
