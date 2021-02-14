@@ -34,24 +34,24 @@ public class FaxRotationUtil {
       mc.player.rotationYawHead = yaw;
    }
 
-   public void lookAtPos(final BlockPos pos) {
+   public static void lookAtPos(final BlockPos pos) {
       final float[] angle = FaxMathUtil.calcAngle(mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)(pos.getX() + 0.5f), (double)(pos.getY() + 0.5f), (double)(pos.getZ() + 0.5f)));
-      this.setPlayerRotations(angle[0], angle[1]);
+      setPlayerRotations(angle[0], angle[1]);
    }
 
-   public void lookAtVec3d(final Vec3d vec3d) {
+   public static void lookAtVec3d(final Vec3d vec3d) {
       final float[] angle = FaxMathUtil.calcAngle(mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d(vec3d.x, vec3d.y, vec3d.z));
-      this.setPlayerRotations(angle[0], angle[1]);
+      setPlayerRotations(angle[0], angle[1]);
    }
 
    public void lookAtVec3d(final double x, final double y, final double z) {
       final Vec3d vec3d = new Vec3d(x, y, z);
-      this.lookAtVec3d(vec3d);
+      lookAtVec3d(vec3d);
    }
 
    public void lookAtEntity(final Entity entity) {
       final float[] angle = FaxMathUtil.calcAngle(mc.player.getPositionEyes(mc.getRenderPartialTicks()), entity.getPositionEyes(mc.getRenderPartialTicks()));
-      this.setPlayerRotations(angle[0], angle[1]);
+      setPlayerRotations(angle[0], angle[1]);
    }
 
    public void setPlayerPitch(final float pitch) {

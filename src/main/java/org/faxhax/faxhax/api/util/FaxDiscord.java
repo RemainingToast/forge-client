@@ -27,8 +27,8 @@ public class FaxDiscord {
 
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         DiscordRichPresence presence = new DiscordRichPresence();
-
-        presence.largeImageText = FaxHax.MOD_NAME + " v" + FaxHax.VERSION;
+        
+        presence.largeImageText = "discord.gg/D6XqgbVGFT";
         presence.joinSecret = SECRET;
         presence.startTimestamp = START_TIME;
 
@@ -36,9 +36,9 @@ public class FaxDiscord {
 
         handlers.ready = u -> {
             user[0] = u;
-            System.out.println("[FaxHax] Discord RPC Started! Welcome " + u.username);
+            System.out.println("[DiscordRpc] Welcome " + u.username);
         };
-        handlers.disconnected = (code, message) -> System.out.println("[FaxHax] Disconnected with error code " + code + " and trace:\n" + message);
+        handlers.disconnected = (code, message) -> System.out.println("[DiscordRpc] Disconnected with error code " + code + " and trace:\n" + message);
         handlers.joinRequest = request -> {
             if(!request.username.equals(user[0].username)){
                 if(mc.player!=null) FaxMessageUtil.sendClientMessage("[DiscordRpc] " +request.username+" has requested to join!");
@@ -74,20 +74,20 @@ public class FaxDiscord {
 
     private String getDiscordDetails() {
         if (mc.player != null) {
-            if (mc.getCurrentServerData() != null) return "playing " + mc.getCurrentServerData().serverIP;
+            if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().serverIP;
 
-            return "chilling in singleplayer";
+            return "Singleplayer";
         }
 
-        return "in the main menu";
+        return "Main Menu";
     }
 
     private String getDiscordState(){
         if (mc.player != null) {
-            if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().pingToServer + "ms | " + mc.player.getHealth() + "hp";
-            return "facing " + FaxPlayerUtil.GetFacing().toString();
+            if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().pingToServer + "ms | " + (int) mc.player.getHealth() + "HP";
+            return "Facing " + FaxPlayerUtil.GetFacing().toString();
         }
-        return null;
+        return FaxHax.MOD_NAME + " v" + FaxHax.VERSION;
     }
 
     private FaxDiscord(){}
