@@ -19,14 +19,14 @@ public class FaxEventHandler implements Listenable {
 	private int nextIndex = 0;
 
 	@EventHandler
-	private Listener<FaxPacket.ReceivePacket> receivePacket = new Listener<>(event -> {
+	private final Listener<FaxPacket.ReceivePacket> receivePacket = new Listener<>(event -> {
 		if (event.getPacket() instanceof SPacketTimeUpdate) {
 			INSTANCE.updateTime();
 		}
 	});
 
 	public FaxEventHandler() {
-		FaxHax.EVENTS.subscribe(this);
+		FaxHax.EVENTS.subscribe(receivePacket);
 		resetTick();
 	}
 

@@ -106,7 +106,7 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
     }
 
     public void setHudInfo(String str) {
-        hudInfo = ChatFormatting.DARK_GRAY + "  [" + ChatFormatting.WHITE + str + ChatFormatting.DARK_GRAY + "]" + ChatFormatting.RESET;
+        hudInfo = ChatFormatting.DARK_GRAY + " [" + ChatFormatting.WHITE + str + ChatFormatting.DARK_GRAY + "]" + ChatFormatting.RESET;
     }
 
     public String getHudInfo() {
@@ -166,8 +166,8 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
     public enum FaxCategory {
         Combat,
         Exploits,
-        Movement,
         Misc,
+        Movement,
         Render,
         Client,
         HUD

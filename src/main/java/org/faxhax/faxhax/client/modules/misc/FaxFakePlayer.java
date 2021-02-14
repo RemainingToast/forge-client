@@ -29,7 +29,6 @@ public class FaxFakePlayer extends FaxModule {
     public FaxFakePlayer() {
         super("Fake Player", FaxCategory.Misc);
         setDrawn(true);
-        setHudInfo(player.getValue());
     }
 
     @Override

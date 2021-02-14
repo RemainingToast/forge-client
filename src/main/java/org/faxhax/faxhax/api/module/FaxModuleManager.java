@@ -7,6 +7,7 @@ import org.faxhax.faxhax.client.modules.client.FaxFont;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.combat.FaxCrystalAura;
 import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
+import org.faxhax.faxhax.client.modules.combat.FaxVelocity;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
@@ -34,6 +35,7 @@ public class FaxModuleManager {
         // Combat
         addMod(new FaxCrystalAura());
         addMod(new FaxFastUtil());
+        addMod(new FaxVelocity());
 
 
         // HUD

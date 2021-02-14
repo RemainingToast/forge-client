@@ -5,6 +5,7 @@
   "refmap": "mixins.faxhax.refmap.json",
   "mixins": [
     "FaxMixinGuiMainMenu",
-    "FaxMixinGuiScreen"
+    "FaxMixinGuiScreen",
+    "FaxMixinNetworkManager"
   ]
 }
