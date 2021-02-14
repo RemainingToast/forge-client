@@ -11,6 +11,7 @@ import org.faxhax.faxhax.client.modules.combat.FaxVelocity;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
 import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
+import org.faxhax.faxhax.client.modules.movement.FaxNoFall;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.faxhax.faxhax.client.modules.render.FaxFullBright;
 import org.faxhax.faxhax.client.modules.misc.FaxOffHandSwing;
@@ -45,6 +46,9 @@ public class FaxModuleManager {
         addMod(new FaxAnnouncer());
         addMod(new FaxFakePlayer());
         addMod(new FaxOffHandSwing());
+
+        // Movement
+        addMod(new FaxNoFall());
 
         // Render
         addMod(new FaxCustomFov());
