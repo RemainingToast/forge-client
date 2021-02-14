@@ -17,10 +17,10 @@ public class FaxFastUtil extends FaxModule {
 
     @Override
     public void setup() {
-        fastPlace = registerBoolean("Fast Place",true);
-        fastBreak = registerBoolean("Fast Break", true);
-        fastCrystal = registerBoolean("Fast Crystals", true);
-        fastExp = registerBoolean("Fast EXP", true);
+        fastPlace = registerBoolean("Place",true);
+        fastBreak = registerBoolean("Break", true);
+        fastCrystal = registerBoolean("Crystals", true);
+        fastExp = registerBoolean("EXP Bottles", true);
     }
 
     @Override
