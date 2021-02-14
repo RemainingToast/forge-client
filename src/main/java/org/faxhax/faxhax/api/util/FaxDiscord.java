@@ -27,7 +27,7 @@ public class FaxDiscord {
 
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         DiscordRichPresence presence = new DiscordRichPresence();
-        
+
         presence.largeImageText = "discord.gg/D6XqgbVGFT";
         presence.joinSecret = SECRET;
         presence.startTimestamp = START_TIME;
