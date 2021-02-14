@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.math;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -17,7 +17,7 @@ import java.util.Random;
 public class FaxMathUtil {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
-    private static Random random = new Random();
+    private static Random random;
     
     public static Vec3d interpolateEntity(Entity entity, float time)
     {

@@ -1,8 +1,8 @@
-package org.faxhax.faxhax.api.util.font;
+package org.faxhax.faxhax.api.util.text;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;

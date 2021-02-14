@@ -1,10 +1,11 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.entity;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.mojang.util.UUIDTypeAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.entity.Entity;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -12,7 +13,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class FaxFriendUtil {
 
@@ -37,6 +40,13 @@ public class FaxFriendUtil {
 
         public UUID getUUID() {
             return uuid;
+        }
+
+        public boolean isOnline() {
+            for(Entity player : Minecraft.getMinecraft().world.playerEntities) {
+                if(player.getUniqueID().equals(getUUID())) return true;
+            }
+            return false;
         }
     }
 
@@ -98,4 +108,11 @@ public class FaxFriendUtil {
         return r;
     }
 
+    static public List<Friend> getOnlineFriends() {
+        List<Friend> online = new ArrayList<>();
+        for(Friend friend : friends){
+            if(friend.isOnline()) online.add(friend);
+        }
+        return online;
+    }
 }

@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.render;
 
 import net.minecraft.client.renderer.GlStateManager;
 

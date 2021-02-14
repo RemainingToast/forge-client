@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.entity;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

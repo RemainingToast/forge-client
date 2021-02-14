@@ -8,7 +8,7 @@ import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxHUDModule;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
-import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 
 import java.awt.*;
 import java.util.ArrayList;

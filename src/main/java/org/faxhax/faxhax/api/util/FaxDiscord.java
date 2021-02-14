@@ -6,6 +6,8 @@ import club.minnced.discord.rpc.DiscordRichPresence;
 import club.minnced.discord.rpc.DiscordUser;
 import net.minecraft.client.Minecraft;
 import org.faxhax.faxhax.FaxHax;
+import org.faxhax.faxhax.api.util.entity.FaxPlayerUtil;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
 
 import java.util.UUID;
 
@@ -72,18 +74,18 @@ public class FaxDiscord {
 
     private String getDiscordDetails() {
         if (mc.player != null) {
-            if (mc.getCurrentServerData() != null) return "ᴏɴ " + mc.getCurrentServerData().serverIP;
+            if (mc.getCurrentServerData() != null) return "playing " + mc.getCurrentServerData().serverIP;
 
-            return "ɪɴ sɪɴɢʟᴇᴘʟᴀʏᴇʀ";
+            return "chilling in singleplayer";
         }
 
-        return "ɪɴ ᴛʜᴇ ᴍᴀɪɴ ᴍᴇɴᴜ";
+        return "in the main menu";
     }
 
     private String getDiscordState(){
         if (mc.player != null) {
-            if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().pingToServer + "ᴍs ᴘɪɴɢ | " + mc.player.getHealth() + "ʜᴇᴀʟᴛʜ";
-            return "ꜰᴀᴄɪɴɢ " + FaxPlayerUtil.GetFacing().toString();
+            if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().pingToServer + "ms | " + mc.player.getHealth() + "hp";
+            return "facing " + FaxPlayerUtil.GetFacing().toString();
         }
         return null;
     }

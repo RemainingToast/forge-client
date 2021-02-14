@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.math;
 
 import java.util.Calendar;
 
@@ -22,6 +22,28 @@ public class FaxTimeUtil {
 
     public static int get_second() {
         return Calendar.getInstance().get(Calendar.SECOND);
+    }
+
+    public class FaxTimer {
+
+        private long time;
+
+        public FaxTimer() {
+            this.time = -1L;
+        }
+
+        public boolean passed(final long ms) {
+            return this.getTime(System.nanoTime() - this.time) >= ms;
+        }
+
+        public void reset() {
+            this.time = System.nanoTime();
+        }
+
+        public long getTime(final long time) {
+            return time / 1000000L;
+        }
+
     }
 
 }

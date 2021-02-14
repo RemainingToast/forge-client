@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.math;
 
 public class FaxPair<T, S> {
     T key;

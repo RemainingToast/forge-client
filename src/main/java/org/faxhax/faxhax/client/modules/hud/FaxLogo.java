@@ -6,7 +6,7 @@ import com.lukflug.panelstudio.hud.HUDComponent;
 import com.lukflug.panelstudio.theme.Theme;
 import net.minecraft.util.ResourceLocation;
 import org.faxhax.faxhax.api.module.FaxHUDModule;
-import org.faxhax.faxhax.api.util.FaxTextureHelper;
+import org.faxhax.faxhax.api.util.render.FaxTextureHelper;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;

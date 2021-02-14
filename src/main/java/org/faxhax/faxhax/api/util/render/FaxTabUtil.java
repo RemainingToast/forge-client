@@ -1,7 +1,9 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.render;
 
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.scoreboard.ScorePlayerTeam;
+import org.faxhax.faxhax.api.util.entity.FaxEnemyUtil;
+import org.faxhax.faxhax.api.util.entity.FaxFriendUtil;
 
 public class FaxTabUtil {
 

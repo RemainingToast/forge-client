@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.entity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -10,7 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-import static org.faxhax.faxhax.api.util.FaxBlockUtil.swingArm;
+import static org.faxhax.faxhax.api.util.block.FaxBlockUtil.swingArm;
 
 public class FaxEntityUtil {
 

@@ -4,7 +4,7 @@ import com.lukflug.panelstudio.settings.EnumSetting;
 import com.lukflug.panelstudio.settings.NumberSetting;
 import com.lukflug.panelstudio.settings.Toggleable;
 import org.faxhax.faxhax.api.module.FaxModule;
-import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 
 import java.awt.*;
 import java.util.List;

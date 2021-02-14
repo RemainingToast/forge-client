@@ -15,8 +15,7 @@ import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
 import org.faxhax.faxhax.api.util.FaxDiscord;
-import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
-import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
+import org.faxhax.faxhax.api.util.text.FaxFontRenderer;
 import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;

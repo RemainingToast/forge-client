@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.entity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;

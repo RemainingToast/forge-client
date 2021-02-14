@@ -7,9 +7,7 @@ import com.lukflug.panelstudio.theme.GameSenseTheme;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import org.faxhax.faxhax.FaxHax;
-import org.faxhax.faxhax.api.util.FaxColor;
-import org.faxhax.faxhax.api.util.font.FaxFontRenderer;
-import org.faxhax.faxhax.api.util.font.FaxFontUtil;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
 

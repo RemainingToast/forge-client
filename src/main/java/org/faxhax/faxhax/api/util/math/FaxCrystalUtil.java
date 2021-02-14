@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.math;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -29,8 +29,8 @@ public class FaxCrystalUtil {
     static final Minecraft mc = Minecraft.getMinecraft();
 
     public static List<BlockPos> possiblePlacePositions(float placeRange, boolean thirteen) {
-        NonNullList positions = NonNullList.create();
-        positions.addAll((Collection) FaxCrystalUtil.getSphere(FaxCrystalUtil.getPlayerPos(FaxCrystalUtil.mc.player), placeRange, (int)placeRange, false, true, 0).stream().filter(pos -> FaxCrystalUtil.canPlaceCrystal(pos, thirteen)).collect(Collectors.toList()));
+        List<BlockPos> positions = NonNullList.create();
+        positions.addAll(FaxCrystalUtil.getSphere(FaxCrystalUtil.getPlayerPos(FaxCrystalUtil.mc.player), placeRange, (int)placeRange, false, true, 0).stream().filter(pos -> FaxCrystalUtil.canPlaceCrystal(pos, thirteen)).collect(Collectors.toList()));
         return positions;
     }
 

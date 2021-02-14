@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.block;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;

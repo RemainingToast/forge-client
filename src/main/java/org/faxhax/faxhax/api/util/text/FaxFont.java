@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util.font;
+package org.faxhax.faxhax.api.util.text;
 
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import org.lwjgl.opengl.GL11;

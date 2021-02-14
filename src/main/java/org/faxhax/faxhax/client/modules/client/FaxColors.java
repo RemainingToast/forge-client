@@ -2,9 +2,7 @@ package org.faxhax.faxhax.client.modules.client;
 
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
-import org.faxhax.faxhax.api.util.FaxColor;
-
-import java.awt.*;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 
 public class FaxColors extends FaxModule {
 

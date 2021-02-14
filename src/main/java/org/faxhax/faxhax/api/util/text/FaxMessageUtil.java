@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.api.util;
+package org.faxhax.faxhax.api.util.text;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -51,11 +51,11 @@ public class FaxMessageUtil {
 		sendClientMessage(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
 	}
 
-	public static void send_client_message(String message) {
+	public static void sendClientWarn(String message) {
 		sendClientMessage(ChatFormatting.GOLD + FaxHax.MOD_NAME + " " + r + message);
 	}
 
-	public static void send_client_error_message(String message) {
+	public static void sendClientError(String message) {
 		sendClientMessage(ChatFormatting.RED + FaxHax.MOD_NAME + " " + r + message);
 	}
 

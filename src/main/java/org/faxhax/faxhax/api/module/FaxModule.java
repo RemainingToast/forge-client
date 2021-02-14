@@ -5,10 +5,9 @@ import com.lukflug.panelstudio.settings.Toggleable;
 import net.minecraft.client.Minecraft;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.setting.FaxSetting;
-import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.*;
 import java.util.List;
 
 public abstract class FaxModule implements Toggleable, KeybindSetting {

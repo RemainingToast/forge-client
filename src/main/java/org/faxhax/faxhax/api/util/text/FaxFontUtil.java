@@ -1,9 +1,8 @@
-package org.faxhax.faxhax.api.util.font;
+package org.faxhax.faxhax.api.util.text;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import org.faxhax.faxhax.FaxHax;
-import org.faxhax.faxhax.api.util.FaxColor;
+import org.faxhax.faxhax.api.util.render.FaxColor;
 
 public class FaxFontUtil {
     private static final Minecraft mc = Minecraft.getMinecraft();
