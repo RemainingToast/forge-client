@@ -10,6 +10,9 @@ import net.minecraft.util.text.event.HoverEvent;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxModule;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,11 +23,16 @@ public class FaxMessageUtil {
 	private static final ChatFormatting DARK_GRAY = ChatFormatting.DARK_GRAY;
 	private static final String PREFIX = DARK_GRAY + "[" + ChatFormatting.DARK_AQUA + FaxHax.MOD_NAME + DARK_GRAY + "] " + GRAY;
 
+	private static final List<String> RANDOM_CA_ENABLED = new ArrayList<>();
+	private static final List<String> RANDOM_CA_DISABLED = new ArrayList<>();
+
 	public static void toggleMessage(FaxModule module) {
 		String message;
+		Random random = new Random();
+		initRandomMessages();
 		if (module.getName().equalsIgnoreCase("Crystal Aura")) {
-			if(module.isOn()) message = PREFIX + "Started " + ChatFormatting.GREEN + "gamer chair " + GRAY + "mode";
-			else message = PREFIX + "Stopped " + ChatFormatting.RED + "gamer chair " + GRAY + "mode";
+			if(module.isOn()) message = RANDOM_CA_ENABLED.get(random.nextInt(RANDOM_CA_ENABLED.size()));
+			else message = RANDOM_CA_DISABLED.get(random.nextInt(RANDOM_CA_DISABLED.size()));
 		} else {
 			if(module.isOn()) message = PREFIX + module.getName() + ChatFormatting.GREEN + " enabled";
 			else message = PREFIX + module.getName() + ChatFormatting.RED + " disabled";
@@ -33,6 +41,15 @@ public class FaxMessageUtil {
 			final ITextComponent itc = new TextComponentString(message).setStyle(new Style().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString(message))));
 			mc.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(itc, 5936);
 		}
+	}
+
+	private static void initRandomMessages(){
+		RANDOM_CA_ENABLED.add(PREFIX + "we " + ChatFormatting.GREEN + "gaming " + GRAY + "now");
+		RANDOM_CA_ENABLED.add(PREFIX + "nerd destroyer " + ChatFormatting.GREEN + "activated");
+		RANDOM_CA_ENABLED.add(PREFIX + "gaming chair turned " + ChatFormatting.GREEN + "on");
+		RANDOM_CA_DISABLED.add(PREFIX + "we aint " + ChatFormatting.RED + "gaming " + GRAY + "no more");
+		RANDOM_CA_DISABLED.add(PREFIX + "nerd destroyer " + ChatFormatting.RED + "deactivated");
+		RANDOM_CA_DISABLED.add(PREFIX + "gaming chair turned " + ChatFormatting.RED + "off");
 	}
 
 	public static void sendClientMessage(String message) {
