@@ -44,4 +44,28 @@ public class FaxAuthUtil {
     public String getLicenseKey(){
         return generateLicenseKey();
     }
+
+    public String getEncryptedLicenseKey(){
+        return encrypt(generateLicenseKey());
+    }
+
+    private String encrypt(String str){
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c : chars){
+            c += 3;
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    private String decrypt(String str){
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c : chars){
+            c -= 3;
+            sb.append(c);
+        }
+        return sb.toString();
+    }
 }

@@ -56,10 +56,11 @@ public class FaxHax {
     public void preInit(FMLPreInitializationEvent event) {
         LOG = LogManager.getLogger(MOD_NAME);
         AUTH = new FaxAuthUtil();
-        AUTH_KEY = AUTH.getLicenseKey();
+        AUTH_KEY = AUTH.getEncryptedLicenseKey();
 
         if(!AUTH.isLicensed(AUTH_KEY)) {
-            printLog(AUTH_KEY + " isn't registered!");
+            printLog("[AUTH] " + AUTH_KEY + " isn't registered!");
+            printLog("[AUTH] Forcing Shutdown!");
             MC.shutdown();
         }
 
@@ -92,7 +93,6 @@ public class FaxHax {
         printLog("~~~~~~~~~~~"+MOD_NAME+"~~~~~~~~~~~");
         printLog("Welcome to "+MOD_NAME+" "+MC.getSession().getUsername()+"!");
         printLog("Running Version "+VERSION);
-        printLog("License: "+AUTH_KEY);
         printLog("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
