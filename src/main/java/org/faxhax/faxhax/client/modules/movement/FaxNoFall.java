@@ -28,12 +28,8 @@ public class FaxNoFall extends FaxModule {
     public void onUpdate() {
         if (mc.player == null) return;
         if(mode.getValue().equalsIgnoreCase("Packet")){
-            if (isFalling() && mc.player.fallDistance <= 3f) return;
+            if (mc.player.isElytraFlying() || mc.player.fallDistance <= 3f) return;
             mc.player.connection.sendPacket(new CPacketPlayer(true));
         }
-    }
-
-    private boolean isFalling(){
-        return mc.player.fallDistance > 0.0f;
     }
 }
