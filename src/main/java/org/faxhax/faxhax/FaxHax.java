@@ -14,6 +14,7 @@ import org.faxhax.faxhax.api.event.FaxEventRegister;
 import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
+import org.faxhax.faxhax.api.util.FaxAuthUtil;
 import org.faxhax.faxhax.api.util.FaxDiscord;
 import org.faxhax.faxhax.api.util.text.FaxFontRenderer;
 import org.lwjgl.opengl.Display;
@@ -22,6 +23,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 @Mod(
@@ -46,6 +48,8 @@ public class FaxHax {
     public static FaxFontRenderer FONT;
     public static FaxGUI CLICKGUI; // GUI Last
 
+    private static FaxAuthUtil AUTH;
+    private static String AUTH_KEY;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -60,6 +64,8 @@ public class FaxHax {
             e.printStackTrace();
             System.out.println("[FaxHax] You can ignore this error.");
         }
+        AUTH = new FaxAuthUtil();
+        AUTH_KEY = AUTH.getLicenseKey();
         LOG = LogManager.getLogger(MOD_NAME);
     }
 
@@ -77,11 +83,17 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        boolean bool = AUTH.isLicensed(AUTH_KEY);
         FaxDiscord.INSTANCE.enable();
         printLog("~~~~~~~~~~~"+MOD_NAME+"~~~~~~~~~~~");
-        printLog("Welcome to " + MOD_NAME + " " + MC.getSession().getUsername() + "!");
+        printLog("Welcome to "+MOD_NAME+" "+MC.getSession().getUsername()+"!");
         printLog("Running Version "+VERSION);
+        printLog("License: "+AUTH_KEY+" Licensed: "+bool);
         printLog("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        if(!bool) {
+            printLog("unluggy");
+            MC.shutdown();
+        }
     }
 
 
