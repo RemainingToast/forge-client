@@ -23,7 +23,7 @@ public class FaxArrayList extends FaxHUDModule {
     private ModuleList list = new ModuleList();
 
     public FaxArrayList() {
-        super("ArrayList", new Point(100,100));
+        super("Array List", new Point(100,100));
         sortUp = registerBoolean("Sort Up", true);
         sortRight = registerBoolean("Sort Right", false);
         color = registerColor("Color", new FaxColor(255, 0, 0, 255));

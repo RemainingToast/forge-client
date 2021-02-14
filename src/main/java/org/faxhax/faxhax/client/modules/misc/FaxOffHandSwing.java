@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FaxOffHandSwing extends FaxModule {
     public FaxOffHandSwing() {
-        super("OffHandSwing", FaxCategory.Misc);
+        super("OffHand Swing", FaxCategory.Misc);
         setDrawn(true);
     }
 

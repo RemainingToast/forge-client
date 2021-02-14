@@ -12,15 +12,15 @@ public class FaxFastUtil extends FaxModule {
     FaxSetting.Boolean fastExp;
 
     public FaxFastUtil() {
-        super("FastUtil", FaxCategory.Combat);
+        super("Fast Util", FaxCategory.Combat);
     }
 
     @Override
     public void setup() {
-        fastPlace = registerBoolean("FastPlace",true);
-        fastBreak = registerBoolean("FastBreak", true);
-        fastCrystal = registerBoolean("FastCrystals", true);
-        fastExp = registerBoolean("FastEXP", true);
+        fastPlace = registerBoolean("Fast Place",true);
+        fastBreak = registerBoolean("Fast Break", true);
+        fastCrystal = registerBoolean("Fast Crystals", true);
+        fastExp = registerBoolean("Fast EXP", true);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class FaxClickGUI extends FaxModule {
     public static FaxSetting.Boolean customFont;
 
     public FaxClickGUI() {
-        super("ClickGUI", FaxCategory.Client);
+        super("Click GUI", FaxCategory.Client);
         setDrawn(false);
         setBind(Keyboard.KEY_RSHIFT);
     }

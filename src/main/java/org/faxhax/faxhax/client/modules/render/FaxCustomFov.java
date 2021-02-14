@@ -13,7 +13,7 @@ public class FaxCustomFov extends FaxModule {
     public static FaxSetting.Integer itemFov;
 
     public FaxCustomFov() {
-        super("CustomFOV", FaxCategory.Render);
+        super("Custom FOV", FaxCategory.Render);
         setDrawn(true);
     }
 

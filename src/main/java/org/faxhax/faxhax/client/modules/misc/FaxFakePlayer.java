@@ -26,7 +26,7 @@ public class FaxFakePlayer extends FaxModule {
     FaxSetting.Boolean maxArmour;
 
     public FaxFakePlayer() {
-        super("FakePlayer", FaxCategory.Misc);
+        super("Fake Player", FaxCategory.Misc);
         setDrawn(true);
     }
 

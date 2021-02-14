@@ -1,11 +1,14 @@
 package org.faxhax.faxhax.client.modules.combat;
 
+import com.lukflug.panelstudio.mc12.GLInterface;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.math.FaxCrystalUtil;
 import org.faxhax.faxhax.api.util.math.FaxRotationUtil;
+import org.faxhax.faxhax.api.util.render.FaxRenderUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,7 +23,7 @@ public class FaxCrystalAura extends FaxModule {
     FaxSetting.Boolean rotate;
 
     public FaxCrystalAura() {
-        super("CrystalAura", FaxCategory.Combat);
+        super("Crystal Aura", FaxCategory.Combat);
     }
 
     @Override
@@ -56,6 +59,9 @@ public class FaxCrystalAura extends FaxModule {
 
         breakCrystal(crystal);
 
+        GLInterface.end();
+        FaxRenderUtil.drawText(new BlockPos(crystal.posX,crystal.posY,crystal.posZ), String.valueOf(FaxCrystalUtil.calculateDamage(crystal, mc.player)));
+        GLInterface.begin();
     }
 
     private void breakCrystal(EntityEnderCrystal endCrystal){
