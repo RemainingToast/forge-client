@@ -34,7 +34,7 @@ public class FaxAuthUtil {
         SystemInfo systemInfo = new SystemInfo();
         OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
         ComputerSystem computerSystem = systemInfo.getHardware().getComputerSystem();
-        return operatingSystem.getManufacturer() + "#" + computerSystem.getSerialNumber() + "#" + computerSystem.getHardwareUUID();
+        return operatingSystem.getManufacturer() + "#" + computerSystem.getHardwareUUID();
     }
 
     public Boolean isLicensed(String hwid) {
