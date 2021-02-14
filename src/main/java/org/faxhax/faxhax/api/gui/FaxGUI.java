@@ -16,6 +16,7 @@ import org.faxhax.faxhax.api.util.render.FaxColor;
 import org.faxhax.faxhax.api.util.text.FaxFontUtil;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
+import org.faxhax.faxhax.client.modules.client.FaxFont;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class FaxGUI extends MinecraftHUDGUI {
             public void drawString(Point pos, String s, Color c) {
                 GLInterface.end();
                 int x=pos.x+2, y=pos.y+2;
-                FaxFontUtil.drawStringWithShadow(FaxClickGUI.customFont.getValue(),s,x,y,new FaxColor(c));
+                FaxFontUtil.drawStringWithShadow(FaxFont.INSTANCE.isOn(), s,x,y,new FaxColor(c));
                 GLInterface.begin();
             }
 

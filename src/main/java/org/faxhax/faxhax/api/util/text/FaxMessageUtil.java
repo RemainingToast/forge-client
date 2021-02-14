@@ -62,8 +62,8 @@ public class FaxMessageUtil {
 		String message_input;
 
 		public ChatMessage(String message) {
-			Pattern p       = Pattern.compile("&[0123456789abcdefrlosmk]");
-			Matcher m       = p.matcher(message);
+			Pattern p = Pattern.compile("&[0123456789abcdefrlosmk]");
+			Matcher m = p.matcher(message);
 			StringBuffer sb = new StringBuffer();
 
 			while (m.find()) {

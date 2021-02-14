@@ -8,8 +8,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.util.render.FaxColor;
+import org.faxhax.faxhax.api.util.text.FaxFontUtil;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
+import org.faxhax.faxhax.client.modules.client.FaxFont;
 
 import java.awt.*;
 
@@ -44,7 +46,7 @@ public class FaxTheme extends GameSenseTheme {
             }
             if(level == 0) {
                 GLInterface.end();
-                if(FaxClickGUI.customFont.getValue()) FaxHax.FONT.drawCenteredStringWithShadow(text,rectangle,new FaxColor(getFontColor(focus)));
+                if(FaxFont.INSTANCE.isOn()) FaxFontUtil.getFont().drawCenteredStringWithShadow(text,rectangle,new FaxColor(getFontColor(focus)));
                 else drawCenteredString(text,rectangle,getFontColor(focus));
                 GLInterface.begin();
             }

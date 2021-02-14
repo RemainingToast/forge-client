@@ -17,6 +17,7 @@ import org.faxhax.faxhax.api.setting.FaxSettingManager;
 import org.faxhax.faxhax.api.util.FaxAuthUtil;
 import org.faxhax.faxhax.api.util.FaxDiscord;
 import org.faxhax.faxhax.api.util.text.FaxFontRenderer;
+import org.faxhax.faxhax.api.util.text.FaxFontUtil;
 import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;
@@ -46,7 +47,7 @@ public class FaxHax {
     public static FaxEventManager EVENT_MANAGER;
     public static FaxSettingManager SETTINGS;
     public static FaxModuleManager MODULES;
-    public static FaxFontRenderer FONT;
+//    public static FaxFontRenderer FONT;
     public static FaxGUI CLICKGUI; // GUI Last
 
     private static FaxAuthUtil AUTH;
@@ -83,7 +84,7 @@ public class FaxHax {
         SETTINGS = new FaxSettingManager();
         MODULES = new FaxModuleManager();
         CLICKGUI = new FaxGUI(); // GUI Last
-        FONT = new FaxFontRenderer(new Font("Junction", Font.PLAIN, 18),true,true);
+        FaxFontUtil.setFont(new FaxFontRenderer(new Font("Junction", Font.PLAIN, 18),true,true));
         FaxEventRegister.registerEventManager(EVENT_MANAGER);
     }
 

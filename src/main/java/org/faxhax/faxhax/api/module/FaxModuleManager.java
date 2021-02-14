@@ -3,6 +3,7 @@ package org.faxhax.faxhax.api.module;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.client.modules.client.FaxClickGUI;
 import org.faxhax.faxhax.client.modules.client.FaxColors;
+import org.faxhax.faxhax.client.modules.client.FaxFont;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.combat.FaxCrystalAura;
 import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
@@ -27,6 +28,7 @@ public class FaxModuleManager {
         // Client
         addMod(new FaxClickGUI());
         addMod(new FaxColors());
+        addMod(new FaxFont());
         addMod(new FaxHudEditor());
 
         // Combat
