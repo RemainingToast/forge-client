@@ -2,6 +2,7 @@ package org.faxhax.faxhax.api.module;
 
 import com.lukflug.panelstudio.settings.KeybindSetting;
 import com.lukflug.panelstudio.settings.Toggleable;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.setting.FaxSetting;
@@ -15,6 +16,7 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
     protected static final Minecraft mc = Minecraft.getMinecraft();
 
     String name;
+    String hudInfo;
     FaxCategory faxCategory;
     int bind;
     boolean enabled;
@@ -26,6 +28,7 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
         this.bind = Keyboard.KEY_NONE;
         this.enabled = false;
         this.drawn = true;
+        this.hudInfo = "";
         setup();
     }
 
@@ -102,8 +105,12 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
         onToggle();
     }
 
+    public void setHudInfo(String str) {
+        hudInfo = ChatFormatting.DARK_GRAY + "  [" + ChatFormatting.WHITE + str + ChatFormatting.DARK_GRAY + "]" + ChatFormatting.RESET;
+    }
+
     public String getHudInfo() {
-        return "";
+        return hudInfo;
     }
 
     public void setup() {

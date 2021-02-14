@@ -55,7 +55,7 @@ public class FaxArrayList extends FaxHUDModule {
         @Override
         public String getItem(int index) {
             FaxModule module = activeModules.get(index);
-            return module.getName() + ChatFormatting.GRAY + " " + module.getHudInfo();
+            return module.getName() + module.getHudInfo();
         }
 
         @Override
