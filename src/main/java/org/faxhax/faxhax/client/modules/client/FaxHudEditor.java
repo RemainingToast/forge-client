@@ -2,6 +2,8 @@ package org.faxhax.faxhax.client.modules.client;
 
 import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxModule;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 public class FaxHudEditor extends FaxModule {
     public FaxHudEditor() {
@@ -13,5 +15,10 @@ public class FaxHudEditor extends FaxModule {
     protected void onEnable() {
         FaxHax.CLICKGUI.enterHUDEditor();
         disable();
+    }
+
+    @Override
+    public void onToggle() {
+        if(mc.player!=null&&FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn()) FaxMessageUtil.toggleMessage(this);
     }
 }

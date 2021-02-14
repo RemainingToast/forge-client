@@ -61,6 +61,10 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
 
     }
 
+    public void onToggle(){
+
+    }
+
     public void onUpdate() {
 
     }
@@ -68,6 +72,7 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
     public void onRender() {
 
     }
+
 
     public boolean isEnabled() {
         return this.enabled;
@@ -94,6 +99,7 @@ public abstract class FaxModule implements Toggleable, KeybindSetting {
         else if(!isEnabled()) {
             enable();
         }
+        onToggle();
     }
 
     public String getHudInfo() {

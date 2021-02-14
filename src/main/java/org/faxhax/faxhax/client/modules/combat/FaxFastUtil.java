@@ -3,6 +3,8 @@ package org.faxhax.faxhax.client.modules.combat;
 import net.minecraft.init.Items;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 public class FaxFastUtil extends FaxModule {
 
@@ -21,6 +23,11 @@ public class FaxFastUtil extends FaxModule {
         fastBreak = registerBoolean("Break", true);
         fastCrystal = registerBoolean("Crystals", true);
         fastExp = registerBoolean("EXP Bottles", true);
+    }
+
+    @Override
+    public void onToggle() {
+        if(mc.player!=null&& FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn()) FaxMessageUtil.toggleMessage(this);
     }
 
     @Override

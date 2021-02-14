@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.GameType;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +29,11 @@ public class FaxFakePlayer extends FaxModule {
     public FaxFakePlayer() {
         super("Fake Player", FaxCategory.Misc);
         setDrawn(true);
+    }
+
+    @Override
+    public void onToggle() {
+        if(mc.player!=null&&FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn()) FaxMessageUtil.toggleMessage(this);
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.faxhax.faxhax.api.util.math.FaxCrystalUtil;
 import org.faxhax.faxhax.api.util.math.FaxRotationUtil;
 import org.faxhax.faxhax.api.util.render.FaxRenderUtil;
 import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -47,13 +48,8 @@ public class FaxCrystalAura extends FaxModule {
     }
 
     @Override
-    protected void onEnable() {
-        if(mc.player!=null&&announce.getValue()) mc.ingameGUI.addChatMessage(ChatType.CHAT, new FaxMessageUtil.ChatMessage("Crystal aura &aenabled"));
-    }
-
-    @Override
-    protected void onDisable() {
-        if(mc.player!=null&&announce.getValue()) mc.ingameGUI.addChatMessage(ChatType.CHAT, new FaxMessageUtil.ChatMessage("Crystal aura &cdisabled"));
+    public void onToggle() {
+        if(mc.player!=null&&(announce.getValue() || FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn())) FaxMessageUtil.toggleMessage(this);
     }
 
     @Override

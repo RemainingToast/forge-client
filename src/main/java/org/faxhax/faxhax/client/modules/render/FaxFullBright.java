@@ -7,6 +7,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,11 @@ public class FaxFullBright extends FaxModule {
     public FaxFullBright() {
         super("Full Bright", FaxCategory.Render);
         setDrawn(true);
+    }
+
+    @Override
+    public void onToggle() {
+        if(mc.player!=null&& FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn()) FaxMessageUtil.toggleMessage(this);
     }
 
     @Override

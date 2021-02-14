@@ -7,6 +7,7 @@ import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.combat.FaxCrystalAura;
 import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
 import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
 import org.faxhax.faxhax.client.modules.render.FaxFullBright;
@@ -37,12 +38,13 @@ public class FaxModuleManager {
         addMod(new FaxArrayList());
 
         // Misc
+        addMod(new FaxAnnouncer());
         addMod(new FaxFakePlayer());
+        addMod(new FaxOffHandSwing());
 
         // Render
         addMod(new FaxCustomFov());
         addMod(new FaxFullBright());
-        addMod(new FaxOffHandSwing());
         addMod(new FaxShulkerPreview());
         faxModules.sort(Comparator.comparing(FaxModule::getName));
     }

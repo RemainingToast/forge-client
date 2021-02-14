@@ -5,6 +5,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
+import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 public class FaxCustomFov extends FaxModule {
 
@@ -15,6 +17,11 @@ public class FaxCustomFov extends FaxModule {
     public FaxCustomFov() {
         super("Custom FOV", FaxCategory.Render);
         setDrawn(true);
+    }
+
+    @Override
+    public void onToggle() {
+        if(mc.player!=null&& FaxAnnouncer.modules.getValue()&&FaxAnnouncer.INSTANCE.isOn()) FaxMessageUtil.toggleMessage(this);
     }
 
     @Override
