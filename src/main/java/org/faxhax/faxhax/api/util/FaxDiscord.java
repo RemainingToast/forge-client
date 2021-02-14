@@ -36,9 +36,9 @@ public class FaxDiscord {
 
         handlers.ready = u -> {
             user[0] = u;
-            System.out.println("[DiscordRpc] Welcome " + u.username);
-        };
-        handlers.disconnected = (code, message) -> System.out.println("[DiscordRpc] Disconnected with error code " + code + " and trace:\n" + message);
+            FaxHax.printLog("Discord RPC Started! Welcome " + u.username);
+            };
+        handlers.disconnected = (code, message) -> FaxHax.printLog("Disconnected with error code " + code + " and trace:\n" + message);
         handlers.joinRequest = request -> {
             if(!request.username.equals(user[0].username)){
                 if(mc.player!=null) FaxMessageUtil.sendClientMessage("[DiscordRpc] " +request.username+" has requested to join!");

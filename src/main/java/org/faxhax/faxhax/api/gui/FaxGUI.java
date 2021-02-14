@@ -35,9 +35,6 @@ public class FaxGUI extends MinecraftHUDGUI {
             public void drawString(Point pos, String s, Color c) {
                 GLInterface.end();
                 int x=pos.x+2, y=pos.y+2;
-//                if (!FaxClickGUI.customFont.getValue()) {
-//                    x+=1;
-//                }
                 FaxFontUtil.drawStringWithShadow(FaxClickGUI.customFont.getValue(),s,x,y,new FaxColor(c));
                 GLInterface.begin();
             }
@@ -68,6 +65,7 @@ public class FaxGUI extends MinecraftHUDGUI {
                     }
                 }
             }
+
         };
         hud=new Toggleable() {
             @Override
@@ -90,6 +88,7 @@ public class FaxGUI extends MinecraftHUDGUI {
             ArrayList<FaxModule> mods = FaxHax.MODULES.getModulesInCategory(category);
             if(mods.size() == 0) continue;
             DraggableContainer panel=new DraggableContainer(category.name(),null,theme.getPanelRenderer(),new SimpleToggleable(false),new SettingsAnimation(FaxClickGUI.animationSpeed),null,new Point(pos),WIDTH) {
+
                 @Override
                 protected int getScrollHeight (int childHeight) {
                     return Math.min(childHeight,Math.max(HEIGHT*4,FaxGUI.this.height-getPosition(guiInterface).y-renderer.getHeight(open.getValue()!=0)-HEIGHT));
@@ -103,6 +102,17 @@ public class FaxGUI extends MinecraftHUDGUI {
                 @Override
                 public void handleKey(Context context, int scancode) {
                     if(category!= FaxModule.FaxCategory.HUD || hudEditor) super.handleKey(context,scancode);
+                }
+
+                @Override
+                public void setPosition(Interface inter, Point position) {
+                    Point temp=new Point(position);
+                    Context context=new Context(inter,getWidth(inter),new Point(0,0),true,true);
+                    getHeight(context);
+                    int height=context.getSize().height;
+                    if (temp.y>10) temp.y=10;
+                    else if (temp.y<10-height) temp.y=10-height;
+                    super.setPosition(inter,temp);
                 }
             };
             if(category!= FaxModule.FaxCategory.HUD) gui.addComponent(panel);

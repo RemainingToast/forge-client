@@ -1,14 +1,17 @@
 package org.faxhax.faxhax.client.modules.combat;
 
 import com.lukflug.panelstudio.mc12.GLInterface;
+import net.minecraft.client.gui.ChatLine;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ChatType;
 import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
 import org.faxhax.faxhax.api.util.math.FaxCrystalUtil;
 import org.faxhax.faxhax.api.util.math.FaxRotationUtil;
 import org.faxhax.faxhax.api.util.render.FaxRenderUtil;
+import org.faxhax.faxhax.api.util.text.FaxMessageUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,6 +24,7 @@ public class FaxCrystalAura extends FaxModule {
     FaxSetting.Boolean antiSuicide;
     FaxSetting.Integer minSuicideHealth;
     FaxSetting.Boolean rotate;
+    FaxSetting.Boolean announce;
 
     public FaxCrystalAura() {
         super("Crystal Aura", FaxCategory.Combat);
@@ -39,6 +43,17 @@ public class FaxCrystalAura extends FaxModule {
         handBreak = registerMode("Hand", hands, "Main");
         breakRange = registerDouble("Break Range",4.4,0.0,10.0);
         wallRange = registerDouble("Wall Range",4.4,0.0,10.0);
+        announce = registerBoolean("Announce", true);
+    }
+
+    @Override
+    protected void onEnable() {
+        if(mc.player!=null&&announce.getValue()) mc.ingameGUI.addChatMessage(ChatType.CHAT, new FaxMessageUtil.ChatMessage("Crystal aura &aenabled"));
+    }
+
+    @Override
+    protected void onDisable() {
+        if(mc.player!=null&&announce.getValue()) mc.ingameGUI.addChatMessage(ChatType.CHAT, new FaxMessageUtil.ChatMessage("Crystal aura &cdisabled"));
     }
 
     @Override
