@@ -54,12 +54,12 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        LOG = LogManager.getLogger(MOD_NAME);
         AUTH = new FaxAuthUtil();
         AUTH_KEY = AUTH.getLicenseKey();
-        LOG = LogManager.getLogger(MOD_NAME);
 
         if(!AUTH.isLicensed(AUTH_KEY)) {
-            printLog("You don't have a FaxHax license!");
+            printLog(AUTH_KEY + " isn't registered!");
             MC.shutdown();
         }
 
