@@ -17,7 +17,6 @@ public class FaxLogo extends FaxHUDModule {
 
     public FaxLogo() {
         super("Logo", new Point(5,5));
-        setDrawn(false);
     }
 
     @Override

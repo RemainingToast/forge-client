@@ -27,7 +27,6 @@ public class FaxArrayList extends FaxHUDModule {
         sortUp = registerBoolean("Sort Up", true);
         sortRight = registerBoolean("Sort Right", false);
         color = registerColor("Color", new FaxColor(255, 0, 0, 255));
-        setDrawn(false);
     }
 
     @Override
@@ -38,9 +37,9 @@ public class FaxArrayList extends FaxHUDModule {
     public void onRender() {
         list.activeModules.clear();
         for (FaxModule module: FaxHax.MODULES.getModules()) {
-            if (module.isOn() && module.isDrawn()) list.activeModules.add(module);
+            if (module.isOn() && module.isDrawn() && module.getCategory() != FaxCategory.HUD) list.activeModules.add(module);
         }
-        list.activeModules.sort(Comparator.comparing(module -> -FaxHax.CLICKGUI.guiInterface.getFontWidth(module.getName()+ChatFormatting.GRAY+" "+module.getHudInfo())));
+        list.activeModules.sort(Comparator.comparing(module -> -FaxHax.CLICKGUI.guiInterface.getFontWidth(module.getName()+module.getHudInfo())));
     }
 
     private class ModuleList implements HUDList {
