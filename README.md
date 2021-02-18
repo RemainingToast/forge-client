@@ -7,3 +7,4 @@ FaxHax is a utility mod aimed for anarchy servers
 - UID 3 1440_
 - UID 4 Reap
 - UID 5 Fax Machine
+- UID 6 Olliem5
