@@ -1,8 +1,8 @@
 package org.faxhax.faxhax.api.event.events;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxRenderName extends FaxEventCancellable {
+public class FaxRenderName extends FaxEvent {
 
     public AbstractClientPlayer Entity;
     public double X;

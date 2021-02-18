@@ -1,9 +1,9 @@
 package org.faxhax.faxhax.api.event.events;
 
 import net.minecraft.entity.MoverType;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxEventMove extends FaxEventCancellable {
+public class FaxEventMove extends FaxEvent {
 	
 	private MoverType moveType;
 

@@ -1,9 +1,9 @@
 package org.faxhax.faxhax.api.event.events;
 
 import net.minecraft.entity.Entity;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxEventEntity extends FaxEventCancellable {
+public class FaxEventEntity extends FaxEvent {
 	private Entity entity;
 
 	public FaxEventEntity(Entity entity) {

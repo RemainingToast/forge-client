@@ -1,6 +1,6 @@
 package org.faxhax.faxhax.api.event.events;
 
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxBossBar extends FaxEventCancellable {
+public class FaxBossBar extends FaxEvent {
 }

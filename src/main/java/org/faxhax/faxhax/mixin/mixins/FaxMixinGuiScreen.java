@@ -1,4 +1,4 @@
-package org.faxhax.faxhax.mixins;
+package org.faxhax.faxhax.mixin.mixins;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

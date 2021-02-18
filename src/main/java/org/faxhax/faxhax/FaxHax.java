@@ -9,8 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.faxhax.faxhax.api.event.FaxEventManager;
-import org.faxhax.faxhax.api.event.FaxEventRegister;
+import org.faxhax.faxhax.api.event.FaxEventProcessor;
 import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
@@ -24,9 +23,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 @Mod(
         modid = FaxHax.MOD_ID,
@@ -44,7 +41,6 @@ public class FaxHax {
     public static final String VERSION = "1.0.1";
 
     public static EventBus EVENTS;
-    public static FaxEventManager EVENT_MANAGER;
     public static FaxSettingManager SETTINGS;
     public static FaxModuleManager MODULES;
 //    public static FaxFontRenderer FONT;
@@ -80,12 +76,12 @@ public class FaxHax {
     public void init(FMLInitializationEvent event) {
         MC = Minecraft.getMinecraft();
         EVENTS = new EventManager();
-        EVENT_MANAGER = new FaxEventManager();
+        FaxEventProcessor EVENT_PROCESSOR = new FaxEventProcessor();
+        EVENT_PROCESSOR.init();
         SETTINGS = new FaxSettingManager();
         MODULES = new FaxModuleManager();
         CLICKGUI = new FaxGUI(); // GUI Last
         FaxFontUtil.setFont(new FaxFontRenderer(new Font("Junction", Font.PLAIN, 18),true,true));
-        FaxEventRegister.registerEventManager(EVENT_MANAGER);
     }
 
     @Mod.EventHandler

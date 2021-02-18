@@ -5,9 +5,9 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.math.Vec3d;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxEventRender extends FaxEventCancellable {
+public class FaxEventRender extends FaxEvent {
 	private final ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
 	private final Tessellator tessellator;
 	private final Vec3d       renderPos;

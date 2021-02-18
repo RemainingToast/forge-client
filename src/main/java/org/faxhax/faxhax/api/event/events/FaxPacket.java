@@ -1,14 +1,13 @@
 package org.faxhax.faxhax.api.event.events;
 
 import net.minecraft.network.Packet;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxPacket extends FaxEventCancellable {
+public class FaxPacket extends FaxEvent {
 	private final Packet packet;
 
 	public FaxPacket(Packet packet) {
 		super();
-
 		this.packet = packet;
 	}
 
@@ -16,14 +15,27 @@ public class FaxPacket extends FaxEventCancellable {
 		return this.packet;
 	}
 
-	public static class ReceivePacket extends FaxPacket {
-		public ReceivePacket(Packet packet) {
+	public static class Receive extends FaxPacket {
+
+		public Receive(Packet packet) {
 			super(packet);
 		}
 	}
 
-	public static class SendPacket extends FaxPacket {
-		public SendPacket(Packet packet) {
+	public static class Send extends FaxPacket {
+		public Send(Packet packet) {
+			super(packet);
+		}
+	}
+
+	public static class PostReceive extends FaxPacket {
+		public PostReceive(Packet packet) {
+			super(packet);
+		}
+	}
+
+	public static class PostSend extends FaxPacket {
+		public PostSend(Packet packet) {
 			super(packet);
 		}
 	}

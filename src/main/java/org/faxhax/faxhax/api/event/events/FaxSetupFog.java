@@ -1,8 +1,8 @@
 package org.faxhax.faxhax.api.event.events;
 
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxSetupFog extends FaxEventCancellable {
+public class FaxSetupFog extends FaxEvent {
     
     public int startCoords;
     public float partialTicks;

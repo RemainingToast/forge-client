@@ -2,9 +2,9 @@ package org.faxhax.faxhax.api.event.events;
 
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxEventDamageBlock extends FaxEventCancellable {
+public class FaxEventDamageBlock extends FaxEvent {
 
     private BlockPos BlockPos;
     private EnumFacing Direction;

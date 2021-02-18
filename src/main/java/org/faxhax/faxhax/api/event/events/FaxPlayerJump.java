@@ -1,8 +1,8 @@
 package org.faxhax.faxhax.api.event.events;
 
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxPlayerJump extends FaxEventCancellable {
+public class FaxPlayerJump extends FaxEvent {
     
     public double motionX;
     public double motionY;

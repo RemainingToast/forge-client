@@ -1,9 +1,9 @@
 package org.faxhax.faxhax.api.event.events;
 
 import net.minecraft.util.EnumHand;
-import org.faxhax.faxhax.api.event.FaxEventCancellable;
+import org.faxhax.faxhax.api.event.FaxEvent;
 
-public class FaxEventSwing extends FaxEventCancellable {
+public class FaxEventSwing extends FaxEvent {
     
     public EnumHand hand;
 

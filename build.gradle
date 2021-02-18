@@ -65,8 +65,8 @@ dependencies {
 
 shadowJar {
     dependencies {
-        include(dependency('club.minnced:java-discord-rpc:2.0.1'))
-        include(dependency('com.github.oshi:oshi-core:5.5.0'))
+        include(dependency("club.minnced:java-discord-rpc:2.0.1"))
+        include(dependency("com.github.oshi:oshi-core:5.5.0"))
         include(dependency("com.lukflug:panelstudio-mc12"))
         include(dependency("com.github.ionar2:Alpine"))
         include(dependency("com.lukflug:panelstudio"))
