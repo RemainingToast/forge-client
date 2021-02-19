@@ -3,7 +3,7 @@ buildscript {
         jcenter()
         maven {
             name = "SpongePowered"
-            url  = "https://repo.spongepowered.org/repository/maven-public/"
+            url  = "https://repo.spongepowered.org/maven"
         }
         maven {
             name = "forge"
@@ -25,10 +25,15 @@ group = 'org.faxhax'
 version = '1.0.1'
 archivesBaseName = 'FaxHax'
 
+compileJava {
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 minecraft {
     version = project.forgeVersion
     runDir = "run"
     mappings = project.mcpVersion
+    coreMod = 'org.faxhax.faxhax.mixin.FaxMixinLoader'
     makeObfSourceJar = true
 }
 
@@ -36,7 +41,7 @@ repositories {
     mavenCentral()
     maven {
         name = "spongepowered-repo"
-        url  = "https://repo.spongepowered.org/repository/maven-public/"
+        url  = "https://repo.spongepowered.org/maven"
     }
     maven {
         name = 'lukflug'
@@ -63,6 +68,18 @@ dependencies {
 
 }
 
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include "mcmod.info"
+        expand "version": project.version, "mcversion": project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "mcmod.info"
+    }
+}
+
 shadowJar {
     dependencies {
         include(dependency("club.minnced:java-discord-rpc:2.0.1"))
@@ -72,36 +89,18 @@ shadowJar {
         include(dependency("com.lukflug:panelstudio"))
         include(dependency("org.spongepowered:mixin"))
     }
+    classifier = 'release'
 }
 
 mixin {
     defaultObfuscationEnv searge
-    add sourceSets.main, "mixins.faxhax.refmap.json"
+    add sourceSets.main, 'mixins.faxhax.refmap.json'
 }
 
 reobf {
     shadowJar {
         mappingType = 'SEARGE'
-        classpath   = sourceSets.main.compileClasspath
-    }
-}
-
-processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
-
-        // replace version and mcversion
-        expand "version": project.version, "mcversion": project.minecraft.version
-    }
-
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-//        exclude "mcmod.info"
+        classpath = sourceSets.main.compileClasspath
     }
 }
 

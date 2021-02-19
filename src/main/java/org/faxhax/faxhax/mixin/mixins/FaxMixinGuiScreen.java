@@ -23,7 +23,6 @@ public class FaxMixinGuiScreen {
     RenderItem itemRender = Minecraft.getMinecraft().getRenderItem();
     FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
-
     @Inject(method = "renderToolTip", at = @At("HEAD"), cancellable = true)
     public void renderToolTip(ItemStack stack, int x, int y, CallbackInfo info) {
         if (FaxHax.MODULES.isModuleEnabled(new FaxShulkerPreview()) && stack.getItem() instanceof ItemShulkerBox) {
