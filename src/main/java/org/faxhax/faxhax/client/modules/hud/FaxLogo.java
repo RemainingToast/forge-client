@@ -21,12 +21,12 @@ public class FaxLogo extends FaxHUDModule {
 
     @Override
     public void populate(Theme theme) {
-        component = new LogoComponent(theme);
+        component = new FaxLogoComponent(theme);
     }
 
-    private class LogoComponent extends HUDComponent {
+    private class FaxLogoComponent extends HUDComponent {
 
-        public LogoComponent(Theme theme) {
+        public FaxLogoComponent(Theme theme) {
             super(getName(),theme.getPanelRenderer(),FaxLogo.this.position);
         }
 

@@ -1,6 +1,7 @@
 package org.faxhax.faxhax.api.util.entity;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.init.Items;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
@@ -36,6 +37,19 @@ public class FaxPlayerUtil {
                 return FacingDirection.East;
         }
         return FacingDirection.North;
+    }
+
+    private static int totems = 0;
+
+    public static int getTotemCount(){
+        totems = 0;
+        mc.player.inventory.mainInventory.stream()
+                .filter(itemStack -> itemStack.item == Items.TOTEM_OF_UNDYING)
+                .forEach(value -> totems++);
+        mc.player.inventory.offHandInventory.stream()
+                .filter(itemStack -> itemStack.item == Items.TOTEM_OF_UNDYING)
+                .forEach(itemStack -> totems++);
+        return totems;
     }
 
 }

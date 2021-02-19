@@ -2,14 +2,18 @@ package org.faxhax.faxhax.api.util.text;
 
 import net.minecraft.client.Minecraft;
 import org.faxhax.faxhax.FaxHax;
+import org.faxhax.faxhax.api.module.FaxModule;
 import org.faxhax.faxhax.api.util.render.FaxColor;
+import org.faxhax.faxhax.client.modules.client.FaxFont;
 
 public class FaxFontUtil {
     private static final Minecraft mc = Minecraft.getMinecraft();
 
     public static FaxFontRenderer FONT;
 
-    public static float drawStringWithShadow(boolean customFont, String text, int x, int y, FaxColor color) {
+    private static boolean customFont;
+
+    public static float drawStringWithShadow(String text, int x, int y, FaxColor color) {
         if(customFont) {
             return FONT.drawStringWithShadow(text, x, y, color);
         }
@@ -18,7 +22,7 @@ public class FaxFontUtil {
         }
     }
 
-    public static int getStringWidth(boolean customFont, String string) {
+    public static int getStringWidth(String string) {
         if (customFont) {
             return FONT.getStringWidth(string);
         }
@@ -27,7 +31,7 @@ public class FaxFontUtil {
         }
     }
 
-    public static int getFontHeight(boolean customFont) {
+    public static int getFontHeight() {
         if (customFont) {
             return FONT.getHeight();
         } else {
@@ -41,5 +45,13 @@ public class FaxFontUtil {
 
     public static FaxFontRenderer getFont() {
         return FONT;
+    }
+
+    public static void setCustomFontEnabled(boolean bool) {
+        FaxFontUtil.customFont = bool;
+    }
+
+    public static boolean isOn() {
+        return customFont;
     }
 }

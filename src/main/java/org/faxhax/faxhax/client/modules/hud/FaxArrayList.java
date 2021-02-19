@@ -20,7 +20,7 @@ public class FaxArrayList extends FaxHUDModule {
     private FaxSetting.Boolean sortUp;
     private FaxSetting.Boolean sortRight;
     private FaxSetting.ColorSetting color;
-    private ModuleList list = new ModuleList();
+    private FaxModuleList list = new FaxModuleList();
 
     public FaxArrayList() {
         super("ArrayList", new Point(100,100));
@@ -42,7 +42,7 @@ public class FaxArrayList extends FaxHUDModule {
         list.activeModules.sort(Comparator.comparing(module -> -FaxHax.CLICKGUI.guiInterface.getFontWidth(module.getName()+module.getHudInfo())));
     }
 
-    private class ModuleList implements HUDList {
+    private class FaxModuleList implements HUDList {
 
         public List<FaxModule> activeModules = new ArrayList<>();
 

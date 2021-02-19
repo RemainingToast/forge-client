@@ -43,7 +43,6 @@ public class FaxHax {
     public static EventBus EVENTS;
     public static FaxSettingManager SETTINGS;
     public static FaxModuleManager MODULES;
-//    public static FaxFontRenderer FONT;
     public static FaxGUI CLICKGUI; // GUI Last
 
     private static FaxAuthUtil AUTH;

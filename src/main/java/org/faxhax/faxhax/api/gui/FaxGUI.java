@@ -36,18 +36,18 @@ public class FaxGUI extends MinecraftHUDGUI {
             public void drawString(Point pos, String s, Color c) {
                 GLInterface.end();
                 int x=pos.x+2, y=pos.y+2;
-                FaxFontUtil.drawStringWithShadow(FaxFont.INSTANCE.isOn(), s,x,y,new FaxColor(c));
+                FaxFontUtil.drawStringWithShadow(s,x,y,new FaxColor(c));
                 GLInterface.begin();
             }
 
             @Override
             public int getFontWidth(String s) {
-                return Math.round(FaxFontUtil.getStringWidth(FaxClickGUI.customFont.getValue(),s))+4;
+                return Math.round(FaxFontUtil.getStringWidth(s))+4;
             }
 
             @Override
             public int getFontHeight() {
-                return Math.round(FaxFontUtil.getFontHeight(FaxClickGUI.customFont.getValue()))+2;
+                return Math.round(FaxFontUtil.getFontHeight())+2;
             }
 
             @Override
