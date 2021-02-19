@@ -7,7 +7,7 @@ import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 public class FaxHudEditor extends FaxModule {
     public FaxHudEditor() {
-        super("HUD Editor", FaxCategory.Client);
+        super("HUDEditor", FaxCategory.Client);
         setDrawn(false);
     }
 

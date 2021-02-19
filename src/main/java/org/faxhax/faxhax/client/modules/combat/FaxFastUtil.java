@@ -14,7 +14,7 @@ public class FaxFastUtil extends FaxModule {
     FaxSetting.Boolean fastExp;
 
     public FaxFastUtil() {
-        super("Fast Util", FaxCategory.Combat);
+        super("FastUtil", FaxCategory.Combat);
     }
 
     @Override

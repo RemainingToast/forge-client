@@ -18,7 +18,7 @@ public class FaxFullBright extends FaxModule {
 
 
     public FaxFullBright() {
-        super("Full Bright", FaxCategory.Render);
+        super("FullBright", FaxCategory.Render);
         setDrawn(true);
         setHudInfo(mode.getValue());
     }

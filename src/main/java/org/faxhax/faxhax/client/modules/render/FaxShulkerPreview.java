@@ -6,7 +6,7 @@ import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 
 public class FaxShulkerPreview extends FaxModule {
     public FaxShulkerPreview() {
-        super("Shulker Preview", FaxCategory.Render);
+        super("ShulkerPreview", FaxCategory.Render);
     }
 
     @Override

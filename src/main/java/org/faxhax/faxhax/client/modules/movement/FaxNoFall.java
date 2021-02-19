@@ -12,7 +12,7 @@ public class FaxNoFall extends FaxModule {
     FaxSetting.Mode mode;
 
     public FaxNoFall() {
-        super("No Fall", FaxCategory.Movement);
+        super("NoFall", FaxCategory.Movement);
         setHudInfo(mode.getValue());
     }
 

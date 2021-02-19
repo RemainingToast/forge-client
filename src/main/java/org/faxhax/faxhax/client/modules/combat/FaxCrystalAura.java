@@ -28,7 +28,7 @@ public class FaxCrystalAura extends FaxModule {
     FaxSetting.Boolean announce;
 
     public FaxCrystalAura() {
-        super("Crystal Aura", FaxCategory.Combat);
+        super("CrystalAura", FaxCategory.Combat);
     }
 
     @Override
