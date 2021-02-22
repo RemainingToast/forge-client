@@ -85,7 +85,7 @@ public class FaxDiscord {
     private String getDiscordState(){
         if (mc.player != null) {
             if (mc.getCurrentServerData() != null) return mc.getCurrentServerData().pingToServer + "ms | " + (int) mc.player.getHealth() + "HP";
-            return "Facing " + FaxPlayerUtil.GetFacing().toString();
+            return "Facing " + FaxPlayerUtil.getDirection().toString();
         }
         return FaxHax.MOD_NAME + " v" + FaxHax.VERSION;
     }

@@ -253,15 +253,15 @@ public class FaxMathUtil {
         final Calendar c = Calendar.getInstance();
         final int timeOfDay = c.get(11);
         if (timeOfDay < 12) {
-            return "Good Morning ";
+            return "Good morning ";
         }
         if (timeOfDay < 16) {
-            return "Good Afternoon ";
+            return "Good afternoon ";
         }
         if (timeOfDay < 21) {
-            return "Good Evening ";
+            return "Good evening ";
         }
-        return "Good Night ";
+        return "Good night ";
     }
 
     public static double radToDeg(final double rad) {

@@ -5,6 +5,7 @@ import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
 import org.faxhax.faxhax.api.module.FaxHUDModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
+import org.faxhax.faxhax.api.util.math.FaxMathUtil;
 import org.faxhax.faxhax.api.util.render.FaxColor;
 import org.faxhax.faxhax.api.util.text.FaxFontUtil;
 
@@ -13,7 +14,7 @@ import java.awt.*;
 public class FaxWelcomer extends FaxHUDModule {
 
     private static FaxSetting.ColorSetting color;
-    private static final String string = "Welcome to the vibe zone "+ mc.session.getUsername();
+    private static final String string = FaxMathUtil.getTimeOfDay() + mc.session.getUsername() + " welcome to the vibe zone";
 
 
     public FaxWelcomer() {

@@ -7,10 +7,7 @@ import org.faxhax.faxhax.client.modules.client.FaxFont;
 import org.faxhax.faxhax.client.modules.client.FaxHudEditor;
 import org.faxhax.faxhax.client.modules.combat.FaxCrystalAura;
 import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
-import org.faxhax.faxhax.client.modules.hud.FaxArrayList;
-import org.faxhax.faxhax.client.modules.hud.FaxTotems;
-import org.faxhax.faxhax.client.modules.hud.FaxWatermark;
-import org.faxhax.faxhax.client.modules.hud.FaxWelcomer;
+import org.faxhax.faxhax.client.modules.hud.*;
 import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.movement.FaxNoFall;
@@ -42,6 +39,8 @@ public class FaxModuleManager {
 
         // HUD
         addMod(new FaxArrayList());
+        addMod(new FaxCoords());
+        addMod(new FaxDirection());
         addMod(new FaxTotems());
         addMod(new FaxWatermark());
         addMod(new FaxWelcomer());
