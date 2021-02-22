@@ -30,7 +30,7 @@ public class FaxMessageUtil {
 		String message;
 		Random random = new Random();
 		initRandomMessages();
-		if (module.getName().equalsIgnoreCase("Crystal Aura")) {
+		if (module.getName().equalsIgnoreCase("CrystalAura")) {
 			if(module.isOn()) message = RANDOM_CA_ENABLED.get(random.nextInt(RANDOM_CA_ENABLED.size()));
 			else message = RANDOM_CA_DISABLED.get(random.nextInt(RANDOM_CA_DISABLED.size()));
 		} else {
