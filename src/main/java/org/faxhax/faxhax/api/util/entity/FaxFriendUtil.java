@@ -50,7 +50,7 @@ public class FaxFriendUtil {
         }
     }
 
-    public static Friend get_friend_object(String name) {
+    public static Friend getFriend(String name) {
         ArrayList<NetworkPlayerInfo> infoMap = new ArrayList<NetworkPlayerInfo>(Minecraft.getMinecraft().getConnection().getPlayerInfoMap());
         NetworkPlayerInfo profile = infoMap.stream().filter(networkPlayerInfo -> networkPlayerInfo.getGameProfile().getName().equalsIgnoreCase(name)).findFirst().orElse(null);
         if (profile == null) {

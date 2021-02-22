@@ -62,6 +62,7 @@ public class FaxGUI extends MinecraftHUDGUI {
                     if (!hudComponents.contains(component)) {
                         Point p = component.getPosition(guiInterface);
                         p.translate(0, -diff);
+                        if (p.y>10) p.y=10;
                         component.setPosition(guiInterface, p);
                     }
                 }
@@ -111,8 +112,8 @@ public class FaxGUI extends MinecraftHUDGUI {
                     Context context=new Context(inter,getWidth(inter),new Point(0,0),true,true);
                     getHeight(context);
                     int height=context.getSize().height;
-                    if (temp.y>10) temp.y=10;
-                    else if (temp.y<10-height) temp.y=10-height;
+//                    if (temp.y>10) temp.y=10;
+                    if (temp.y<10-height) temp.y=10-height;
                     super.setPosition(inter,temp);
                 }
             };

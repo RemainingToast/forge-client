@@ -41,8 +41,7 @@ public class FaxPlayerUtil {
     }
 
     public static FacingDirection getDirection() {
-        switch (MathHelper.floor((double) (mc.player.rotationYaw * 8.0F / 360.0F) + 0.5D) & 7)
-        {
+        switch (MathHelper.floor((double) (mc.player.rotationYaw * 8.0F / 360.0F) + 0.5D) & 7) {
             case 0:
             case 1:
                 return FacingDirection.South;
