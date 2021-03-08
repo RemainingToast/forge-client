@@ -11,6 +11,5 @@ public class FaxMixinGuiMainMenu {
 
     @Inject(method = "drawScreen", at = @At("HEAD"), cancellable = true)
     public void drawScreen(int mouseX, int mouseY, float partialTicks, CallbackInfo ci){
-        System.out.println("Main menu mixin\n\n\nyeet");
     }
 }
