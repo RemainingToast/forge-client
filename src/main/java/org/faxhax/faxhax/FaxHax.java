@@ -52,15 +52,15 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOG = LogManager.getLogger(MOD_NAME);
-        AUTH = new FaxAuthUtil();
-        AUTH_KEY = AUTH.getEncryptedLicenseKey();
+        LOG = event.getModLog();
+        //AUTH = new FaxAuthUtil();
+        //AUTH_KEY = AUTH.getEncryptedLicenseKey();
 
-        if(!AUTH.isLicensed(AUTH_KEY)) {
-            printLog("[AUTH] " + AUTH_KEY + " isn't registered!");
-            printLog("[AUTH] Forcing Shutdown!");
-            MC.shutdown();
-        }
+        //if(!AUTH.isLicensed(AUTH_KEY)) {
+        //    printLog("[AUTH] " + AUTH_KEY + " isn't registered!");
+        //    printLog("[AUTH] Forcing Shutdown!");
+        //    MC.shutdown();
+        //}
 
         Display.setTitle("FaxHax" + " v" + VERSION);
         try {

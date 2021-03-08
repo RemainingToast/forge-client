@@ -17,9 +17,8 @@ public class FaxMixinLoader implements IFMLLoadingPlugin {
 
     public FaxMixinLoader() {
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.momentum.json");
+        Mixins.addConfiguration("mixins.faxhax.json");
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
-        FaxHax.printLog("Mixins Initialised");
     }
 
     @Override
@@ -37,7 +36,7 @@ public class FaxMixinLoader implements IFMLLoadingPlugin {
 
     @Override
     public void injectData(Map<String, Object> data) {
-        isObfuscatedEnvironment = (boolean)(Boolean)data.get("runtimeDeobfuscationEnabled");
+        isObfuscatedEnvironment = (boolean)data.get("runtimeDeobfuscationEnabled");
     }
 
     @Override

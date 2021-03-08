@@ -1,11 +1,13 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.5",
   "package": "org.faxhax.faxhax.mixin.mixins",
   "refmap": "mixins.faxhax.refmap.json",
   "mixins": [
     "FaxMixinGuiMainMenu",
     "FaxMixinGuiScreen",
-    "FaxMixinNetworkManager"
+    "FaxMixinNetworkManager",
+    "MixinMinecraft"
   ]
 }
