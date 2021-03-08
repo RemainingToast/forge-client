@@ -1,15 +1,17 @@
 package org.faxhax.faxhax;
 
-import me.zero.alpine.fork.bus.EventBus;
-import me.zero.alpine.fork.bus.EventManager;
+//import me.zero.alpine.fork.bus.EventBus;
+//import me.zero.alpine.fork.bus.EventManager;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.faxhax.faxhax.api.event.FaxEventProcessor;
+//import org.faxhax.faxhax.api.event.FaxEventProcessor;
+import org.faxhax.faxhax.api.event.FaxForgeEvents;
 import org.faxhax.faxhax.api.gui.FaxGUI;
 import org.faxhax.faxhax.api.module.FaxModuleManager;
 import org.faxhax.faxhax.api.setting.FaxSettingManager;
@@ -40,7 +42,7 @@ public class FaxHax {
     public static final String MOD_NAME = "FaxHax";
     public static final String VERSION = "1.0.1";
 
-    public static EventBus EVENTS;
+    public static FaxForgeEvents FORGE_EVENTS;
     public static FaxSettingManager SETTINGS;
     public static FaxModuleManager MODULES;
     public static FaxGUI CLICKGUI; // GUI Last
@@ -73,13 +75,22 @@ public class FaxHax {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
         MC = Minecraft.getMinecraft();
-        EVENTS = new EventManager();
-        FaxEventProcessor EVENT_PROCESSOR = new FaxEventProcessor();
-        EVENT_PROCESSOR.init();
+
+        FORGE_EVENTS = new FaxForgeEvents();
+        FORGE_EVENTS.init();
+        printLog("Events Loaded");
+
         SETTINGS = new FaxSettingManager();
+        printLog("Settings Loaded");
+
         MODULES = new FaxModuleManager();
+        printLog("Modules Loaded");
+
         CLICKGUI = new FaxGUI(); // GUI Last
+        printLog("Initialization Complete");
+
         FaxFontUtil.setFont(new FaxFontRenderer(new Font("Junction", Font.PLAIN, 18),true,true));
     }
 

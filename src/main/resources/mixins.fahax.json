@@ -1,4 +1,4 @@
-{
+  {
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "package": "org.faxhax.faxhax.mixin.mixins",

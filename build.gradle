@@ -2,12 +2,12 @@ buildscript {
     repositories {
         jcenter()
         maven {
-            name = "SpongePowered"
-            url  = "https://repo.spongepowered.org/maven"
-        }
-        maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "SpongePowered"
+            url  = "https://repo.spongepowered.org/maven"
         }
     }
     dependencies {
@@ -23,22 +23,27 @@ apply plugin: "org.spongepowered.mixin"
 
 group = 'org.faxhax'
 version = '1.0.1'
-archivesBaseName = 'FaxHax'
+archivesBaseName = 'faxhax'
 
 compileJava {
     sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 minecraft {
-    version = project.forgeVersion
-    runDir = "run"
-    mappings = project.mcpVersion
+    version = '1.12.2-14.23.5.2768'
+    runDir = 'run'
+    mappings = 'snapshot_20180814'
     coreMod = 'org.faxhax.faxhax.mixin.FaxMixinLoader'
     makeObfSourceJar = true
 }
 
 repositories {
+    jcenter()
     mavenCentral()
+    maven {
+        name = 'impactdevelopment-repo'
+        url = 'https://impactdevelopment.github.io/maven/'
+    }
     maven {
         name = "spongepowered-repo"
         url  = "https://repo.spongepowered.org/maven"
@@ -54,29 +59,36 @@ repositories {
 }
 
 dependencies {
+    // HWID
     implementation 'com.github.oshi:oshi-core:5.5.0'
-    compile 'club.minnced:java-discord-rpc:2.0.1'
+
+    // Mixin
+    compile('org.spongepowered:mixin:0.7.4-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+        exclude module: 'gson'
+        exclude module: 'commons-io'
+    }
+
+    // ClickGUI
     compile('com.lukflug:panelstudio:0.1.8')
     compile('com.lukflug:panelstudio-mc12:0.1.8')
-    compile "com.github.ionar2:Alpine:1.9f"
-    compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
-        exclude module: "launchwrapper"
-        exclude module: "commons-io"
-        exclude module: "guava"
-        exclude module: "gson"
-    }
+
+    // Discord RPC
+    compile 'club.minnced:java-discord-rpc:2.0.1'
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
     from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
-        expand "version": project.version, "mcversion": project.minecraft.version
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
     from(sourceSets.main.resources.srcDirs) {
-        exclude "mcmod.info"
+        exclude 'mcmod.info'
     }
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 shadowJar {
@@ -84,36 +96,34 @@ shadowJar {
         include(dependency("club.minnced:java-discord-rpc:2.0.1"))
         include(dependency("com.github.oshi:oshi-core:5.5.0"))
         include(dependency("com.lukflug:panelstudio-mc12"))
-        include(dependency("com.github.ionar2:Alpine"))
         include(dependency("com.lukflug:panelstudio"))
         include(dependency("org.spongepowered:mixin"))
+        include(dependency('cabaletta:baritone-api'))
     }
-    classifier = 'release'
+    exclude 'dummyThing'
+    exclude 'LICENSE.txt'
+    classifier = ''
 }
 
 mixin {
     defaultObfuscationEnv searge
-    add sourceSets.main, 'mixins.faxhax.refmap.json'
+    add sourceSets.main, 'mixins.momentum.refmap.json'
 }
+
+jar.manifest.attributes(
+        'FMLCorePlugin': 'org.faxhax.faxhax.mixin.FaxMixinLoader',
+        'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+        'MixinConfigs': 'mixins.faxhax.json',
+        'FMLCorePluginContainsFMLMod': true,
+        'FMLAT': 'faxhax_at.cfg',
+        'ForceLoadAsMod': true,
+        'TweakOrder': 0
+)
 
 reobf {
     shadowJar {
         mappingType = 'SEARGE'
         classpath = sourceSets.main.compileClasspath
-    }
-}
-
-jar {
-    manifest {
-        attributes (
-                "FMLCorePluginContainsFMLMod" : "true",
-                "ForceLoadAsMod"              : "true",
-                "FMLCorePlugin"               : "org.faxhax.faxhax.mixin.FaxMixinLoader",
-                "MixinConfigs"                : "mixins.faxhax.json",
-                "tweakClass"                  : "org.spongepowered.asm.launch.MixinTweaker",
-                "TweakOrder"                  : 0,
-                "FMLAT"                       : "faxhax_at.cfg"
-        )
     }
 }
 

@@ -1,7 +1,5 @@
 package org.faxhax.faxhax.api.event;
 
-import me.zero.alpine.fork.listener.Listenable;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -12,18 +10,23 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.faxhax.faxhax.FaxHax;
 import org.lwjgl.input.Keyboard;
 
-public class FaxEventProcessor implements Listenable {
+import static org.faxhax.faxhax.FaxHax.MC;
 
-    public static FaxEventProcessor INSTANCE;
-    Minecraft mc = Minecraft.getMinecraft();
+public class FaxForgeEvents {
 
-    public FaxEventProcessor() {
+    public static FaxForgeEvents INSTANCE;
+
+    public FaxForgeEvents() {
         INSTANCE = this;
+    }
+
+    public void init(){
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
-        if (mc.player != null) {
+        if (MC.player != null) {
             FaxHax.MODULES.onUpdate();
         }
     }
@@ -35,7 +38,7 @@ public class FaxEventProcessor implements Listenable {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent.Post event) {
-        FaxHax.EVENTS.post(event);
+//        MinecraftForge.EVENT_BUS.post(event);
         if(event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
             FaxHax.MODULES.onRender();
         }
@@ -48,8 +51,4 @@ public class FaxEventProcessor implements Listenable {
         }
     }
 
-    public void init(){
-        FaxHax.EVENTS.subscribe(this);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
 }

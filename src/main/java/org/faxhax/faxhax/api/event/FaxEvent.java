@@ -1,11 +1,34 @@
 package org.faxhax.faxhax.api.event;
 
-import me.zero.alpine.fork.event.type.Cancellable;
+import net.minecraftforge.fml.common.eventhandler.Cancelable;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class FaxEvent extends Cancellable {
+@Cancelable
+public class FaxEvent extends Event {
+
+    Era ERA;
 
     public FaxEvent() {
 
     }
 
+    public FaxEvent(Era era) {
+        this.ERA = era;
+    }
+
+    public Era getERA() {
+        return this.ERA;
+    }
+
+    public void setStage(Era era) {
+        this.ERA = era;
+        this.setCanceled(false);
+    }
+
+    public enum Era {
+        PRE,
+        POST
+    }
+
 }
+

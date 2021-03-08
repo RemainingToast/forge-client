@@ -1,26 +1,25 @@
 package org.faxhax.faxhax.mixin;
 
+import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.faxhax.faxhax.FaxHax;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
-import javax.annotation.Nullable;
 import java.util.Map;
 
-@IFMLLoadingPlugin.Name(FaxHax.MOD_NAME)
-@IFMLLoadingPlugin.MCVersion("1.12.2")
+@IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class FaxMixinLoader implements IFMLLoadingPlugin {
 
+    @SuppressWarnings("unused")
     private static boolean isObfuscatedEnvironment = false;
 
     public FaxMixinLoader() {
-        FaxHax.printLog("Mixins initialized");
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.faxhax.json");
+        Mixins.addConfiguration("mixins.momentum.json");
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
-        FaxHax.printLog(MixinEnvironment.getDefaultEnvironment().getObfuscationContext());
+        FaxHax.printLog("Mixins Initialised");
     }
 
     @Override
@@ -33,15 +32,12 @@ public class FaxMixinLoader implements IFMLLoadingPlugin {
         return null;
     }
 
-    @Nullable
     @Override
-    public String getSetupClass() {
-        return null;
-    }
+    public String getSetupClass() { return null; }
 
     @Override
     public void injectData(Map<String, Object> data) {
-        isObfuscatedEnvironment = (boolean) data.get("runtimeDeobfuscationEnabled");
+        isObfuscatedEnvironment = (boolean)(Boolean)data.get("runtimeDeobfuscationEnabled");
     }
 
     @Override
