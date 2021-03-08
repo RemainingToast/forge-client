@@ -9,6 +9,7 @@ import org.faxhax.faxhax.client.modules.combat.FaxCrystalAura;
 import org.faxhax.faxhax.client.modules.combat.FaxFastUtil;
 import org.faxhax.faxhax.client.modules.hud.*;
 import org.faxhax.faxhax.client.modules.misc.FaxAnnouncer;
+import org.faxhax.faxhax.client.modules.misc.FaxAustralia;
 import org.faxhax.faxhax.client.modules.misc.FaxFakePlayer;
 import org.faxhax.faxhax.client.modules.movement.FaxNoFall;
 import org.faxhax.faxhax.client.modules.render.FaxCustomFov;
@@ -47,6 +48,7 @@ public class FaxModuleManager {
 
         // Misc
         addMod(new FaxAnnouncer());
+        addMod(new FaxAustralia());
         addMod(new FaxFakePlayer());
         addMod(new FaxOffHandSwing());
 

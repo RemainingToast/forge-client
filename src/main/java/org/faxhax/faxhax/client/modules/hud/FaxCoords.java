@@ -3,10 +3,6 @@ package org.faxhax.faxhax.client.modules.hud;
 import com.lukflug.panelstudio.hud.HUDList;
 import com.lukflug.panelstudio.hud.ListComponent;
 import com.lukflug.panelstudio.theme.Theme;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.DimensionType;
-import org.faxhax.faxhax.FaxHax;
 import org.faxhax.faxhax.api.module.FaxHUDModule;
 import org.faxhax.faxhax.api.setting.FaxSetting;
 import org.faxhax.faxhax.api.util.entity.FaxPlayerUtil;
@@ -21,7 +17,7 @@ public class FaxCoords extends FaxHUDModule {
 
     @Override
     public void setup() {
-//        color = registerColor("Color", )
+
     }
 
     @Override
